@@ -2,13 +2,13 @@
   <div id="main">
     <section id="pageTitle">Stacja meteo Rypin</section>
     <Nav/>
-    <Sensor :sensorsCurrent="sensorsCurrent"/>
+    <SensorCategory :sensorsCurrent="sensorsCurrent"/>
   </div>
 </template>
 
 <script>
 import axios from "axios";
-import Sensor from "./components/Sensor/Sensor.vue";
+import SensorCategory from "./components/Sensor/SensorCategory.vue";
 import Nav from "./components/Nav/Nav.vue";
 
 export default {
@@ -22,7 +22,7 @@ export default {
     };
   },
   components: {
-    Sensor,
+    SensorCategory,
     Nav
   },
   created() {
