@@ -2,19 +2,33 @@
   <div id="main">
     <section id="pageTitle">Stacja meteo Rypin</section>
     <Nav/>
-    <Sensor/>
+    <Sensor :sensorsCurrent="sensorsCurrent"/>
   </div>
 </template>
 
 <script>
+import axios from "axios";
 import Sensor from "./components/Sensor/Sensor.vue";
 import Nav from "./components/Nav/Nav.vue";
 
 export default {
   name: "app",
+  props: {
+    endpointCurrent: String
+  },
+  data() {
+    return {
+      sensorsCurrent: []
+    };
+  },
   components: {
     Sensor,
     Nav
+  },
+  created() {
+    axios
+      .get(this.endpointCurrent)
+      .then(res => (this.sensorsCurrent = res.data));
   }
 };
 </script>
