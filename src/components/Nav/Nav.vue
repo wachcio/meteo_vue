@@ -1,7 +1,7 @@
 <template>
   <nav>
     <div class="container">
-      <div class="item refresh">Odśwież dane</div>
+      <div class="item refresh" @click="getJSON">Odśwież dane</div>
       <div class="item current active">Odczyty aktualne</div>
       <div class="item archive">Odczyty archiwalne</div>
     </div>
@@ -9,8 +9,20 @@
 </template>
 
 <script>
+import axios from "axios";
+
 export default {
-  name: "Nav"
+  name: "Nav",
+  props: {
+    endpointCurrent: String
+  },
+  methods: {
+    getJSON() {
+      axios
+        .get(this.endpointCurrent)
+        .then(res => (this.$parent.sensorsCurrent = res.data));
+    }
+  }
 };
 </script>
 

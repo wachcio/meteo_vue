@@ -1,7 +1,7 @@
 <template>
   <div id="main">
     <section id="pageTitle">Stacja meteo Rypin</section>
-    <Nav/>
+    <Nav :endpointCurrent="endpointCurrent"/>
     <SensorCategory :sensorsCurrent="sensorsCurrent"/>
   </div>
 </template>
