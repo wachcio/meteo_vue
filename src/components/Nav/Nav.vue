@@ -58,4 +58,18 @@ nav {
 .active {
   background-color: #68bafb;
 }
+
+@media screen and (max-width: 1100px) {
+  button {
+    position: relative;
+  }
+
+  .container {
+    flex-direction: column;
+  }
+
+  #archiveForm {
+    flex-direction: column;
+  }
+}
 </style>

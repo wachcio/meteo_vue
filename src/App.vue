@@ -3,6 +3,7 @@
     <section id="pageTitle">Stacja meteo Rypin</section>
     <Nav :endpointCurrent="endpointCurrent"/>
     <SensorCategory :sensorsCurrent="sensorsCurrent"/>
+    <AirQualityWidget/>
   </div>
 </template>
 
@@ -10,6 +11,7 @@
 import axios from "axios";
 import SensorCategory from "./components/Sensor/SensorCategory.vue";
 import Nav from "./components/Nav/Nav.vue";
+import AirQualityWidget from "./components/Sensor/AirQualityWidget";
 
 export default {
   name: "app",
@@ -23,7 +25,8 @@ export default {
   },
   components: {
     SensorCategory,
-    Nav
+    Nav,
+    AirQualityWidget
   },
   created() {
     axios
@@ -41,6 +44,8 @@ export default {
 }
 
 body {
+  display: flex;
+  flex-basis: 100%;
   background-color: #0369ba;
   color: #c7eafd;
   font-family: "Lato", sans-serif;

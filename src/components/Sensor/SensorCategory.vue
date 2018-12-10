@@ -73,7 +73,7 @@ export default {
 .readings,
 .sensorWrapper {
   /* display: none; */
-  width: 100vw;
+  flex-basis: 100%;
   display: flex;
   flex-wrap: wrap;
 
