@@ -1,13 +1,13 @@
 <template>
-  <div class="wrapper">
-    <div class="sensor" v-for="sensorCurrent in sensorsCurrent">
-      <div>
-        <SensorTitle :sensorCurrent="sensorCurrent"/>
-        <SensorIcon :sensorCurrent="sensorCurrent"/>
-        <SensorValues :sensorCurrent="sensorCurrent"/>
-      </div>
-    </div>
+  <!-- <div class="wrapper"> -->
+  <!-- <div v-for="sensorCurrent in sensorsCurrent"> -->
+  <div class="sensor">
+    <SensorTitle :sensorCurrent="sensorCurrent"/>
+    <SensorIcon :sensorCurrent="sensorCurrent"/>
+    <SensorValues :sensorCurrent="sensorCurrent"/>
   </div>
+  <!-- </div> -->
+  <!-- </div> -->
 </template>
 
 <script>
@@ -18,7 +18,8 @@ import SensorValues from "./SensorValues";
 export default {
   name: "Sensor",
   props: {
-    sensorsCurrent: Array
+    sensorsCurrent: Array,
+    sensorCurrent: Object
   },
   data() {
     return {};
