@@ -1,13 +1,11 @@
 <template>
-  <!-- <div class="wrapper"> -->
-  <!-- <div v-for="sensorCurrent in sensorsCurrent"> -->
-  <div class="sensor">
-    <SensorTitle :sensorCurrent="sensorCurrent"/>
-    <SensorIcon :sensorCurrent="sensorCurrent"/>
-    <SensorValues :sensorCurrent="sensorCurrent"/>
+  <div>
+    <div class="sensor" @click="clickSensor">
+      <SensorTitle :sensorCurrent="sensorCurrent"/>
+      <SensorIcon :sensorCurrent="sensorCurrent"/>
+      <SensorValues :sensorCurrent="sensorCurrent"/>
+    </div>
   </div>
-  <!-- </div> -->
-  <!-- </div> -->
 </template>
 
 <script>
@@ -18,7 +16,6 @@ import SensorValues from "./SensorValues";
 export default {
   name: "Sensor",
   props: {
-    sensorsCurrent: Array,
     sensorCurrent: Object
   },
   data() {
@@ -31,6 +28,13 @@ export default {
   },
   watch: {
     // sensorsCurrent
+  },
+  methods: {
+    clickSensor() {
+      this.$emit("isVisibleInfo", true);
+
+      this.$emit("sensorActiveData", this.sensorCurrent);
+    }
   }
 };
 </script>

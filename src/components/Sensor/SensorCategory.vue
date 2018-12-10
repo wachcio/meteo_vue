@@ -1,7 +1,7 @@
 <template>
   <div class="readings">
     <div class="wrapper">
-      <div class="sensorTitle" v-for="n in 4">
+      <div class="sensorTitle" v-for="n in 4" :key="n">
         <div class="hrWrapper" v-if="n>1">
           <hr class="hr1">
           <hr class="hr2">
@@ -10,16 +10,22 @@
         <h1>{{sensorsCurrent[newCategoryIndex[n-1]].sensorCategoryTitle}}</h1>
         <div class="sensorWrapper">
           <div v-for="(sensorCurrent, i) in sensorsToCategory(n)" :key="i">
-            <Sensor :sensorCurrent="sensorCurrent"/>
+            <Sensor
+              :sensorCurrent="sensorCurrent"
+              @isVisibleInfo="isVisibleInfo"
+              @sensorActiveData="sensorActiveData"
+            />
           </div>
         </div>
       </div>
     </div>
+    <InfoBox :sensorData="sensorData" v-show="showInfo" @isVisibleInfo="isVisibleInfo"/>
   </div>
 </template>
 
 <script>
 import Sensor from "./Sensor";
+import InfoBox from "./InfoBox";
 
 export default {
   name: "SensorCategory",
@@ -28,7 +34,9 @@ export default {
   },
   data() {
     return {
-      newCategoryIndex: [0, 16, 30, 34]
+      newCategoryIndex: [0, 16, 30, 34],
+      showInfo: false,
+      sensorData: {}
     };
   },
   methods: {
@@ -36,10 +44,17 @@ export default {
       return this.sensorsCurrent.filter(function(sensor) {
         return sensor.sensorCategoryNr == categoryNr;
       });
+    },
+    isVisibleInfo(visible) {
+      this.showInfo = visible;
+    },
+    sensorActiveData(data) {
+      this.sensorData = data;
     }
   },
   components: {
-    Sensor
+    Sensor,
+    InfoBox
   },
   watch: {
     // sensorsCurrent

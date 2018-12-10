@@ -1,5 +1,5 @@
 <template>
-  <div class="title">{{sensorCurrent.sensorName}}</div>
+  <div class="title" @click="showInfo">{{sensorCurrent.sensorName}}</div>
 </template>
 
 <script>
@@ -12,6 +12,11 @@ export default {
     return {
       // sensorsCurrent
     };
+  },
+  methods: {
+    showInfo() {
+      console.log("Klik w tytuł");
+    }
   }
 };
 </script>
