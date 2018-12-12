@@ -1,8 +1,14 @@
 <template>
-  <div id="main">
+  <div id="main" v-if="isLoaded">
     <section id="pageTitle">Stacja meteo Rypin</section>
-    <Nav :endpointCurrent="endpointCurrent"/>
-    <SensorCategory :sensorsCurrent="sensorsCurrent"/>
+    <Nav :endpointCurrent="endpointCurrent" :isLoaded="isLoaded"/>
+    <SensorCategory
+      :sensorsCurrent="sensorsCurrent"
+      :isLoaded="isLoaded"
+      :showInfo="showInfo"
+      @showInfoFun="showInfoFun"
+      v-if="isLoaded"
+    />
     <AirQualityWidget/>
   </div>
 </template>
@@ -20,7 +26,9 @@ export default {
   },
   data() {
     return {
-      sensorsCurrent: []
+      sensorsCurrent: [],
+      isLoaded: false,
+      showInfo: false
     };
   },
   components: {
@@ -29,9 +37,25 @@ export default {
     AirQualityWidget
   },
   created() {
+    // debugger;
+    window.addEventListener("scroll", this.handleScroll);
     axios
       .get(this.endpointCurrent)
-      .then(res => (this.sensorsCurrent = res.data));
+      .then(res => (this.sensorsCurrent = res.data))
+      .then((this.isLoaded = true));
+  },
+
+  destroyed() {
+    window.removeEventListener("scroll", this.handleScroll);
+  },
+  methods: {
+    handleScroll(event) {
+      this.showInfoFun(false);
+    },
+
+    showInfoFun(visible) {
+      this.showInfo = visible;
+    }
   }
 };
 </script>

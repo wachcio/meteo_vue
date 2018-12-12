@@ -1,5 +1,5 @@
 <template>
-  <div class="readings">
+  <div class="readings" v-if="isLoaded">
     <div class="wrapper">
       <div class="sensorTitle" v-for="n in 4" :key="n">
         <div class="hrWrapper" v-if="n>1">
@@ -7,19 +7,26 @@
           <hr class="hr2">
           <hr>
         </div>
-        <h1>{{sensorsCurrent[newCategoryIndex[n-1]].sensorCategoryTitle}}</h1>
+        <h1>{{h1Title(sensorsCurrent[newCategoryIndex[n-1]])}}</h1>
         <div class="sensorWrapper">
           <div v-for="(sensorCurrent, i) in sensorsToCategory(n)" :key="i">
             <Sensor
               :sensorCurrent="sensorCurrent"
-              @isVisibleInfo="isVisibleInfo"
+              :showInfo="showInfo"
+              @showInfoFun="showInfoFun"
               @sensorActiveData="sensorActiveData"
             />
           </div>
         </div>
       </div>
     </div>
-    <InfoBox :sensorData="sensorData" v-show="showInfo" @isVisibleInfo="isVisibleInfo"/>
+    <InfoBox
+      :sensorData="sensorData"
+      :isLoaded="isLoaded"
+      :showInfo="showInfo"
+      v-show="showInfo"
+      @showInfoFun="showInfoFun"
+    />
   </div>
 </template>
 
@@ -30,12 +37,13 @@ import InfoBox from "./InfoBox";
 export default {
   name: "SensorCategory",
   props: {
-    sensorsCurrent: Array
+    sensorsCurrent: Array,
+    isLoaded: Boolean,
+    showInfo: Boolean
   },
   data() {
     return {
       newCategoryIndex: [0, 16, 30, 34],
-      showInfo: false,
       sensorData: {}
     };
   },
@@ -45,11 +53,22 @@ export default {
         return sensor.sensorCategoryNr == categoryNr;
       });
     },
-    isVisibleInfo(visible) {
-      this.showInfo = visible;
-    },
+
     sensorActiveData(data) {
       this.sensorData = data;
+    },
+    h1Title(data) {
+      // console.log(data);
+      if (data !== undefined) {
+        // console.log("Title " + data.sensorCategoryTitle);
+        // console.log(data);
+        return data.sensorCategoryTitle;
+      } else {
+        return null;
+      }
+    },
+    showInfoFun(visible) {
+      this.$emit("showInfoFun", visible);
     }
   },
   components: {

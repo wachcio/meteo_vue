@@ -16,7 +16,8 @@ import SensorValues from "./SensorValues";
 export default {
   name: "Sensor",
   props: {
-    sensorCurrent: Object
+    sensorCurrent: Object,
+    showInfo: Boolean
   },
   data() {
     return {};
@@ -31,7 +32,7 @@ export default {
   },
   methods: {
     clickSensor() {
-      this.$emit("isVisibleInfo", true);
+      this.$emit("showInfoFun", true);
 
       this.$emit("sensorActiveData", this.sensorCurrent);
     }
