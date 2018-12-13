@@ -1,5 +1,5 @@
 <template>
-  <div class="readings" v-if="isLoaded">
+  <div class="readings">
     <div class="wrapper">
       <div class="sensorTitle" v-for="n in 4" :key="n">
         <div class="hrWrapper" v-if="n>1">
@@ -20,13 +20,15 @@
         </div>
       </div>
     </div>
-    <InfoBox
-      :sensorData="sensorData"
-      :isLoaded="isLoaded"
-      :showInfo="showInfo"
-      v-show="showInfo"
-      @showInfoFun="showInfoFun"
-    />
+    <Transition name="fade">
+      <InfoBox
+        :sensorData="sensorData"
+        :isLoaded="isLoaded"
+        :showInfo="showInfo"
+        v-if="showInfo"
+        @showInfoFun="showInfoFun"
+      />
+    </Transition>
   </div>
 </template>
 

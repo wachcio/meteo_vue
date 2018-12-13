@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="sensor" :title="mHover()" @click="clickSensor">
+    <div class="sensor" :title="mHover()" @click.prevent="clickSensor">
       <SensorTitle :sensorCurrent="sensorCurrent"/>
       <SensorIcon :class="checkDate" :sensorCurrent="sensorCurrent"/>
       <SensorValues :sensorCurrent="sensorCurrent"/>

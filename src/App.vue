@@ -1,20 +1,23 @@
 <template>
-  <div>
-    <div id="main">
-      <section id="pageTitle">Stacja meteo Rypin</section>
-      <Nav :endpointCurrent="endpointCurrent" :isLoaded="isLoaded"/>
-      <div v-if="isLoaded">
-        <SensorCategory
-          :sensorsCurrent="sensorsCurrent"
-          :isLoaded="isLoaded"
-          :showInfo="showInfo"
-          @showInfoFun="showInfoFun"
-          v-if="isLoaded"
-        />
-        <AirQualityWidget/>
-      </div>
-      <Preloader v-if="!isLoaded"/>
+  <div id="main">
+    <section id="pageTitle">Stacja meteo Rypin</section>
+    <div v-if="isLoaded">
+      <Nav
+        :endpointCurrent="endpointCurrent"
+        :isLoaded="isLoaded"
+        :showInfo="showInfo"
+        @showInfoFun="showInfoFun"
+      />
+
+      <SensorCategory
+        :sensorsCurrent="sensorsCurrent"
+        :isLoaded="isLoaded"
+        :showInfo="showInfo"
+        @showInfoFun="showInfoFun"
+      />
+      <AirQualityWidget/>
     </div>
+    <Preloader v-if="!isLoaded"/>
   </div>
 </template>
 

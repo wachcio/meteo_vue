@@ -2,8 +2,8 @@
   <nav>
     <div class="container">
       <div class="item refresh" @click="getJSON">Odśwież dane</div>
-      <div class="item current active">Odczyty aktualne</div>
-      <div class="item archive">Odczyty archiwalne</div>
+      <div class="item current active" @click="hideInfo">Odczyty aktualne</div>
+      <div class="item archive" @click="hideInfo">Odczyty archiwalne</div>
     </div>
   </nav>
 </template>
@@ -14,13 +14,18 @@ import axios from "axios";
 export default {
   name: "Nav",
   props: {
-    endpointCurrent: String
+    endpointCurrent: String,
+    showInfo: Boolean
   },
   methods: {
     getJSON() {
+      this.$emit("showInfoFun", false);
       axios
         .get(this.endpointCurrent)
-        .then(res => (this.$parent.sensorsCurrent = res.data));
+        .then(res => (this.sensorsCurrent = res.data));
+    },
+    hideInfo() {
+      this.$emit("showInfoFun", false);
     }
   }
 };
