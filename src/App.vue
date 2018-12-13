@@ -6,6 +6,8 @@
         :endpointCurrent="endpointCurrent"
         :isLoaded="isLoaded"
         :showInfo="showInfo"
+        :activeSection="activeSection"
+        @activeSectionFun="activeSectionFun"
         @showInfoFun="showInfoFun"
       />
 
@@ -13,9 +15,14 @@
         :sensorsCurrent="sensorsCurrent"
         :isLoaded="isLoaded"
         :showInfo="showInfo"
+        :activeSection="activeSection"
+        @activeSectionFun="activeSectionFun"
         @showInfoFun="showInfoFun"
       />
-      <AirQualityWidget/>
+      <AirQualityWidget v-if="activeSection=='current'"/>
+      <div v-if="activeSection=='archives'">
+        <ArchivesMain/>
+      </div>
     </div>
     <Preloader v-if="!isLoaded"/>
   </div>
@@ -27,6 +34,7 @@ import SensorCategory from "./components/Sensor/SensorCategory.vue";
 import Nav from "./components/Nav/Nav.vue";
 import AirQualityWidget from "./components/Sensor/AirQualityWidget";
 import Preloader from "./components/Preloader";
+import ArchivesMain from "./components/Archives/ArchivesMain";
 
 export default {
   name: "app",
@@ -37,14 +45,16 @@ export default {
     return {
       sensorsCurrent: [],
       isLoaded: false,
-      showInfo: false
+      showInfo: false,
+      activeSection: "current"
     };
   },
   components: {
     SensorCategory,
     Nav,
     AirQualityWidget,
-    Preloader
+    Preloader,
+    ArchivesMain
   },
   created() {
     // debugger;
@@ -65,6 +75,9 @@ export default {
 
     showInfoFun(visible) {
       this.showInfo = visible;
+    },
+    activeSectionFun(section) {
+      this.activeSection = section;
     }
   }
 };
@@ -94,6 +107,9 @@ body {
   scrollbar-track-color: #0369ba;
   text-shadow: 4px 4px 11px black;
   scrollbar-base-color: #c7eafd;
+}
+#main {
+  width: 100vw;
 }
 h1 {
   text-align: center;

@@ -1,5 +1,5 @@
 <template>
-  <div class="readings">
+  <div class="readings" v-if="activeSection=='current'">
     <div class="wrapper">
       <div class="sensorTitle" v-for="n in 4" :key="n">
         <div class="hrWrapper" v-if="n>1">
@@ -41,7 +41,8 @@ export default {
   props: {
     sensorsCurrent: Array,
     isLoaded: Boolean,
-    showInfo: Boolean
+    showInfo: Boolean,
+    activeSection: String
   },
   data() {
     return {

@@ -2,8 +2,16 @@
   <nav>
     <div class="container">
       <div class="item refresh" @click="getJSON">Odśwież dane</div>
-      <div class="item current active" @click="hideInfo">Odczyty aktualne</div>
-      <div class="item archive" @click="hideInfo">Odczyty archiwalne</div>
+      <div
+        class="item current"
+        :class="checkActive('current')"
+        @click="changeSection('current')"
+      >Odczyty aktualne</div>
+      <div
+        class="item archive"
+        :class="checkActive('archives')"
+        @click="changeSection('archives')"
+      >Odczyty archiwalne</div>
     </div>
   </nav>
 </template>
@@ -15,7 +23,8 @@ export default {
   name: "Nav",
   props: {
     endpointCurrent: String,
-    showInfo: Boolean
+    showInfo: Boolean,
+    activeSection: String
   },
   methods: {
     getJSON() {
@@ -26,6 +35,17 @@ export default {
     },
     hideInfo() {
       this.$emit("showInfoFun", false);
+    },
+    changeSection(section) {
+      this.$emit("activeSectionFun", section);
+    },
+    checkActive(section) {
+      if (section == this.activeSection) {
+        this.$emit("activeSectionFun", section);
+        return { active: true };
+      } else {
+        return null;
+      }
     }
   }
 };
