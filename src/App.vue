@@ -1,15 +1,20 @@
 <template>
-  <div id="main" v-if="isLoaded">
-    <section id="pageTitle">Stacja meteo Rypin</section>
-    <Nav :endpointCurrent="endpointCurrent" :isLoaded="isLoaded"/>
-    <SensorCategory
-      :sensorsCurrent="sensorsCurrent"
-      :isLoaded="isLoaded"
-      :showInfo="showInfo"
-      @showInfoFun="showInfoFun"
-      v-if="isLoaded"
-    />
-    <AirQualityWidget/>
+  <div>
+    <div id="main">
+      <section id="pageTitle">Stacja meteo Rypin</section>
+      <Nav :endpointCurrent="endpointCurrent" :isLoaded="isLoaded"/>
+      <div v-if="isLoaded">
+        <SensorCategory
+          :sensorsCurrent="sensorsCurrent"
+          :isLoaded="isLoaded"
+          :showInfo="showInfo"
+          @showInfoFun="showInfoFun"
+          v-if="isLoaded"
+        />
+        <AirQualityWidget/>
+      </div>
+      <Preloader v-if="!isLoaded"/>
+    </div>
   </div>
 </template>
 
@@ -18,6 +23,7 @@ import axios from "axios";
 import SensorCategory from "./components/Sensor/SensorCategory.vue";
 import Nav from "./components/Nav/Nav.vue";
 import AirQualityWidget from "./components/Sensor/AirQualityWidget";
+import Preloader from "./components/Preloader";
 
 export default {
   name: "app",
@@ -34,7 +40,8 @@ export default {
   components: {
     SensorCategory,
     Nav,
-    AirQualityWidget
+    AirQualityWidget,
+    Preloader
   },
   created() {
     // debugger;
@@ -73,7 +80,7 @@ body {
   background-color: #0369ba;
   color: #c7eafd;
   font-family: "Lato", sans-serif;
-  font-size: 20px;
+  font-size: 19px;
   font-style: italic;
   scrollbar-3dlight-color: #e3edef;
   scrollbar-arrow-color: #c7eafd;

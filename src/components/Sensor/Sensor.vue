@@ -1,8 +1,8 @@
 <template>
   <div>
-    <div class="sensor" @click="clickSensor">
+    <div class="sensor" :title="mHover()" @click="clickSensor">
       <SensorTitle :sensorCurrent="sensorCurrent"/>
-      <SensorIcon :sensorCurrent="sensorCurrent"/>
+      <SensorIcon :class="checkDate" :sensorCurrent="sensorCurrent"/>
       <SensorValues :sensorCurrent="sensorCurrent"/>
     </div>
   </div>
@@ -12,6 +12,7 @@
 import SensorTitle from "./SensorTitle";
 import SensorIcon from "./SensorIcon";
 import SensorValues from "./SensorValues";
+import { DateTime } from "luxon";
 
 export default {
   name: "Sensor",
@@ -20,7 +21,9 @@ export default {
     showInfo: Boolean
   },
   data() {
-    return {};
+    return {
+      upToDate: true
+    };
   },
   components: {
     SensorTitle,
@@ -35,6 +38,56 @@ export default {
       this.$emit("showInfoFun", true);
 
       this.$emit("sensorActiveData", this.sensorCurrent);
+    },
+    diffDate(sensorDate) {
+      let i1 = DateTime.fromSQL(sensorDate),
+        i2 = DateTime.local(),
+        diff = i2.diff(i1, ["days", "hours", "minutes", "seconds"]).toObject(),
+        result = "";
+
+      if (diff.days) {
+        result += diff.days + " dni, ";
+      }
+
+      if (diff.hours) {
+        result += diff.hours + " godzin/y, ";
+      }
+
+      if (diff.minutes) {
+        result += diff.minutes + " minut/y, ";
+      }
+
+      if (diff.seconds) {
+        result += Math.floor(diff.seconds) + " sekund";
+      }
+
+      return result;
+    },
+    mHover() {
+      return (
+        "Ostatni odczyt " +
+        this.sensorCurrent.valueCurrent.value +
+        this.sensorCurrent.unit +
+        " (" +
+        this.diffDate(this.sensorCurrent.valueCurrent.date) +
+        " temu)"
+      );
+    }
+  },
+  computed: {
+    checkDate() {
+      var dt = new Date(),
+        dtSensor = new Date(this.sensorCurrent.valueCurrent.date),
+        diff = Math.floor((dt - dtSensor) / 60000);
+      // console.log(diff);
+
+      if (diff > 4) {
+        return {
+          error: true
+        };
+      } else {
+        return {};
+      }
     }
   }
 };
@@ -58,13 +111,13 @@ export default {
   margin: 10px;
   height: 320px;
   float: left;
-  width: 147px;
+  width: 137px;
 }
 
 .error {
   border: 0 solid red;
-  border-radius: 18px;
-  box-shadow: 0 0 10px 8px red;
+  border-radius: 15px;
+  box-shadow: 0 0 8px 8px red;
 }
 
 .center {

@@ -30,7 +30,7 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style type="scss" scoped>
 .icon {
-  /* width: 137px; */
+  width: 137px;
   height: 137px;
   /* border: 15px solid red; */
 }
@@ -41,6 +41,8 @@ export default {
   width: 137px;
   height: 137px;
   border: 0;
+  margin: 0;
+  padding: 0;
   border-radius: 15px;
 }
 
