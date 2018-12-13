@@ -2,8 +2,8 @@
   <nav>
     <div class="container">
       <div class="item refresh" @click="getJSON">Odśwież dane</div>
-      <!-- <div class="item current active" @click="hideInfo">Odczyty aktualne</div>
-      <div class="item archive" @click="hideInfo">Odczyty archiwalne</div>-->
+      <div class="item current active" @click="hideInfo">Odczyty aktualne</div>
+      <div class="item archive" @click="hideInfo">Odczyty archiwalne</div>
     </div>
   </nav>
 </template>
