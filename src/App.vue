@@ -20,7 +20,7 @@
         @showInfoFun="showInfoFun"
       />
       <AirQualityWidget v-if="activeSection=='current'"/>
-      <div v-if="activeSection=='archives'">
+      <div v-show="activeSection=='archives'">
         <ArchivesMain/>
       </div>
     </div>
