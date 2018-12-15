@@ -114,6 +114,12 @@ export default {
   },
   methods: {
     formSend(e) {
+      this.rainIndex = this.sensorsNames.findIndex(function(element) {
+        return element == "Opady";
+      });
+      this.windDirectionIndex = this.sensorsNames.findIndex(function(element) {
+        return element == "Kierunek wiatru";
+      });
       this.isResponse = false;
       this.JSONerror = false;
       const now = new Date();
@@ -172,6 +178,14 @@ export default {
         .get(this.url + "&operation=avg")
         .then(res => (this.responseAvg = res.data))
         .then((this.isResponse = true));
+    },
+    selectedClick() {
+      this.rainIndex = this.sensorsNames.findIndex(function(element) {
+        return element == "Opady";
+      });
+      this.windDirectionIndex = this.sensorsNames.findIndex(function(element) {
+        return element == "Kierunek wiatru";
+      });
     }
   },
   computed: {},
