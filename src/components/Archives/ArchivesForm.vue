@@ -66,6 +66,7 @@
         <p>Najwyższy odczyt: {{responseMax.value}}{{responseMax.unit}}</p>
         <p>Najniższy odczyt: {{responseMin.value}}{{responseMin.unit}}</p>
         <p>Średni odczyt: {{responseAvg.value}}{{responseAvg.unit}}</p>
+        <p v-if="sensorIndex==rainIndex">Suma: {{responseSum.value}}{{responseAvg.unit}}</p>
       </div>
     </div>
   </div>
@@ -95,8 +96,10 @@ export default {
       responseMax: [],
       responseMin: [],
       responseAvg: [],
+      responseSum: [],
       responsePeriod: "",
-      JSONerror: false
+      JSONerror: false,
+      rainIndex: -1
     };
   },
   methods: {
@@ -141,6 +144,12 @@ export default {
     getJSON() {
       this.isResponse = false;
 
+      if (this.sensorIndex == this.rainIndex) {
+        axios
+          .get(this.url + "&operation=sum")
+          .then(res => (this.responseSum = res.data));
+      }
+
       axios
         .get(this.url + "&operation=max")
         .then(res => (this.responseMax = res.data));
@@ -163,6 +172,10 @@ export default {
     this.month = now.getMonth() + 1;
     this.day = now.getDate();
     this.hour = now.getHours();
+
+    this.rainIndex = this.sensorsNames.findIndex(function(element) {
+      return element == "Opady";
+    });
   },
   watch: {
     useMonth(newValue, oldValue) {
