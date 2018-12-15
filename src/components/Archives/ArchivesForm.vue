@@ -3,6 +3,7 @@
     <div class="archiveFormContainer">
       <label for="archiveForm">Wybierz datę lub okres dla którego zostaną wyświetlone statystyki</label>
       <form id="archiveForm">
+        <label for="sensor">Czujnik</label>
         <select name="sensor" id="sensor" v-model="sensorIndex">
           <option v-for="(sensor, index) in sensorsNames" :value="index" :key="index">{{sensor}}</option>
         </select>
@@ -56,8 +57,12 @@
           @click.prevent="formSend"
         >
       </form>
-      <div id="result" v-if="isResponse">
+      <div id="result" v-if="JSONerror">
+        <h2>Podano zły okres</h2>
+      </div>
+      <div id="result" v-if="isResponse && !JSONerror">
         <h2>Wyniki dla czujnika "{{responseMax.sensorName}}" za okres {{responsePeriod}}:</h2>
+
         <p>Najwyższy odczyt: {{responseMax.value}}{{responseMax.unit}}</p>
         <p>Najniższy odczyt: {{responseMin.value}}{{responseMin.unit}}</p>
         <p>Średni odczyt: {{responseAvg.value}}{{responseAvg.unit}}</p>
@@ -90,12 +95,25 @@ export default {
       responseMax: [],
       responseMin: [],
       responseAvg: [],
-      responsePeriod: ""
+      responsePeriod: "",
+      JSONerror: false
     };
   },
   methods: {
     formSend(e) {
       this.isResponse = false;
+      this.JSONerror = false;
+      const now = new Date();
+      const dateForm = new Date(this.year, this.month - 1, this.day, this.hour);
+      // console.log("Teraz: " + now);
+      // console.log("Podana: " + dateForm);
+      // console.log(now - dateForm);
+
+      if (now - dateForm < 0) {
+        this.JSONerror = true;
+        return null;
+      }
+
       // http://wachcio.pl/meteo_test/API/GetJSON.php?year=2018&month=12&day=1&hour=12&sensor=0&operation=min
       let result =
         "http://wachcio.pl/meteo_test/API/GetJSON.php?year=" +
@@ -245,6 +263,9 @@ select:focus {
 }
 #result {
   margin-top: 20px;
+}
+label {
+  margin: 0 3px 0 3px;
 }
 
 @media screen and (max-width: 1100px) {
