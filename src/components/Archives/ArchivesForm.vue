@@ -63,10 +63,19 @@
       <div id="result" v-if="isResponse && !JSONerror">
         <h2>Wyniki dla czujnika "{{responseMax.sensorName}}" za okres {{responsePeriod}}:</h2>
 
-        <p>Najwyższy odczyt: {{responseMax.value}}{{responseMax.unit}}</p>
-        <p>Najniższy odczyt: {{responseMin.value}}{{responseMin.unit}}</p>
-        <p>Średni odczyt: {{responseAvg.value}}{{responseAvg.unit}}</p>
-        <p v-if="sensorIndex==rainIndex">Suma: {{responseSum.value}}{{responseAvg.unit}}</p>
+        <p
+          v-show="windDirectionIndex !== sensorIndex"
+        >Najwyższy odczyt: {{responseMax.value}}{{responseMax.unit}}</p>
+        <p
+          v-show="windDirectionIndex !== sensorIndex"
+        >Najniższy odczyt: {{responseMin.value}}{{responseMin.unit}}</p>
+        <p
+          v-show="windDirectionIndex !== sensorIndex"
+        >Średni odczyt: {{responseAvg.value}}{{responseAvg.unit}}</p>
+        <p v-show="sensorIndex==rainIndex">Suma: {{responseSum.value}}{{responseMax.unit}}</p>
+        <p
+          v-show="sensorIndex==windDirectionIndex"
+        >Dominującym kierunkiem wiatru był: {{responseMax.value}}{{responseMax.unit}}</p>
       </div>
     </div>
   </div>
@@ -99,6 +108,7 @@ export default {
       responseSum: [],
       responsePeriod: "",
       JSONerror: false,
+      windDirectionIndex: -1,
       rainIndex: -1
     };
   },
@@ -165,7 +175,7 @@ export default {
     }
   },
   computed: {},
-  mounted() {
+  created() {
     let now = new Date();
 
     this.year = now.getFullYear();
@@ -175,6 +185,9 @@ export default {
 
     this.rainIndex = this.sensorsNames.findIndex(function(element) {
       return element == "Opady";
+    });
+    this.windDirectionIndex = this.sensorsNames.findIndex(function(element) {
+      return element == "Kierunek wiatru";
     });
   },
   watch: {
@@ -189,6 +202,9 @@ export default {
         this.useHour = false;
       }
     }
+    // rainIndex(newValue, oldValue){
+    // rainIndex == sensorIndex
+    // }
   }
 };
 </script>

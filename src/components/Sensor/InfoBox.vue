@@ -1,10 +1,12 @@
 <template>
+  <!-- <div class="bacground"> -->
   <div class="info" @click="clickInfo">
     <h1>{{sensorData.sensorName}}</h1>
     <p>{{info(sensorData, "current")}}</p>
     <p>{{info(sensorData, "max")}}</p>
     <p>{{info(sensorData, "min")}}</p>
   </div>
+  <!-- </div> -->
 </template>
 
 <script>
@@ -115,6 +117,18 @@ export default {
 </script>
 
 <style scoped>
+.bacground {
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  display: block;
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  background-color: black;
+  opacity: 0;
+  z-index: 99;
+}
 .info {
   position: fixed;
   padding: 30px;
@@ -128,6 +142,7 @@ export default {
   border-width: 1px;
   text-align: center;
   z-index: 100;
+  opacity: 1;
 }
 
 h1 {
