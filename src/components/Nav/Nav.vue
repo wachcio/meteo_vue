@@ -37,6 +37,9 @@ export default {
       this.$emit("showInfoFun", false);
     },
     changeSection(section) {
+      if (section == "current") {
+        this.getJSON();
+      }
       this.$emit("activeSectionFun", section);
     },
     checkActive(section) {
@@ -51,7 +54,7 @@ export default {
 };
 </script>
 
-<style type="scss">
+<style scoped>
 nav {
   display: flex;
   justify-content: center;
@@ -64,6 +67,7 @@ nav {
 
 .container {
   display: flex;
+  flex-direction: row;
   justify-content: space-between;
 }
 
