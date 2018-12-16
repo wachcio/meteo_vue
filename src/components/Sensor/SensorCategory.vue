@@ -13,6 +13,8 @@
             <Sensor
               :sensorCurrent="sensorCurrent"
               :showInfo="showInfo"
+              :currentDate="currentDate"
+              @timer="timer"
               @showInfoFun="showInfoFun"
               @sensorActiveData="sensorActiveData"
             />
@@ -47,7 +49,8 @@ export default {
   data() {
     return {
       newCategoryIndex: [0, 16, 30, 34],
-      sensorData: {}
+      sensorData: {},
+      currentDate: undefined
     };
   },
   methods: {
@@ -72,6 +75,11 @@ export default {
     },
     showInfoFun(visible) {
       this.$emit("showInfoFun", visible);
+    },
+    timer() {
+      this.currentDate = new Date();
+
+      setTimeout(this.timer, 1000);
     }
   },
   components: {
@@ -80,6 +88,11 @@ export default {
   },
   watch: {
     // sensorsCurrent
+  },
+
+  created() {
+    this.currentDate = new Date();
+    this.timer();
   }
 };
 </script>

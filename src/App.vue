@@ -9,6 +9,7 @@
         :activeSection="activeSection"
         @activeSectionFun="activeSectionFun"
         @showInfoFun="showInfoFun"
+        @getCurrentJSON="getCurrentJSON"
       />
 
       <SensorCategory
@@ -59,10 +60,7 @@ export default {
   created() {
     // debugger;
     window.addEventListener("scroll", this.handleScroll);
-    axios
-      .get(this.endpointCurrent)
-      .then(res => (this.sensorsCurrent = res.data))
-      .then((this.isLoaded = true));
+    this.getCurrentJSON();
   },
 
   destroyed() {
@@ -71,6 +69,12 @@ export default {
   methods: {
     handleScroll(event) {
       this.showInfoFun(false);
+    },
+    getCurrentJSON() {
+      axios
+        .get(this.endpointCurrent)
+        .then(res => (this.sensorsCurrent = res.data))
+        .then((this.isLoaded = true));
     },
 
     showInfoFun(visible) {

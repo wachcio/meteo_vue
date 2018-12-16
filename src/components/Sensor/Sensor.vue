@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="sensor" :title="mHover()" @click.prevent="clickSensor">
+    <div class="sensor" :title="sesnorHint" @click.prevent="clickSensor">
       <SensorTitle :sensorCurrent="sensorCurrent"/>
       <SensorIcon :class="checkDate" :sensorCurrent="sensorCurrent"/>
       <SensorValues :sensorCurrent="sensorCurrent"/>
@@ -18,20 +18,19 @@ export default {
   name: "Sensor",
   props: {
     sensorCurrent: Object,
-    showInfo: Boolean
+    showInfo: Boolean,
+    currentDate: Date
   },
   data() {
     return {
-      upToDate: true
+      upToDate: true,
+      sesnorHint: ""
     };
   },
   components: {
     SensorTitle,
     SensorIcon,
     SensorValues
-  },
-  watch: {
-    // sensorsCurrent
   },
   methods: {
     clickSensor() {
@@ -42,6 +41,7 @@ export default {
     diffDate(sensorDate) {
       let i1 = DateTime.fromSQL(sensorDate),
         i2 = DateTime.local(),
+        // i2 = this.currentDate,
         diff = i2.diff(i1, ["days", "hours", "minutes", "seconds"]).toObject(),
         result = "";
 
@@ -63,22 +63,20 @@ export default {
 
       return result;
     },
-    mHover() {
-      return (
+    hint() {
+      this.sesnorHint =
         "Ostatni odczyt " +
         this.sensorCurrent.valueCurrent.value +
         this.sensorCurrent.unit +
         " (" +
         this.diffDate(this.sensorCurrent.valueCurrent.date) +
-        " temu)"
-      );
-    }
-  },
-  computed: {
+        " temu)";
+
+      // setTimeout(this.hint, 1000);
+    },
     checkDate() {
-      var dt = new Date(),
-        dtSensor = new Date(this.sensorCurrent.valueCurrent.date),
-        diff = Math.floor((dt - dtSensor) / 60000);
+      let dtSensor = new Date(this.sensorCurrent.valueCurrent.date),
+        diff = Math.floor((this.currentDate - dtSensor) / 60000);
       // console.log(diff);
 
       if (diff > 4) {
@@ -89,6 +87,13 @@ export default {
         return {};
       }
     }
+  },
+  computed: {},
+  watch: {
+    currentDate(newValue, OldValue) {}
+  },
+  mounted() {
+    this.hint();
   }
 };
 </script>

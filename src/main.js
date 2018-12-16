@@ -8,7 +8,7 @@ new Vue({
       h(App, {
          props: {
             endpointCurrent:
-               "http://wachcio.pl/meteo_test/API/GetJSON.php?data=current"
+               "http://wachcio.pl/meteo_vue/API/GetJSON.php?data=current"
          }
       })
 }).$mount("#app");

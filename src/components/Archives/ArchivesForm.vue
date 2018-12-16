@@ -135,7 +135,7 @@ export default {
 
       // http://wachcio.pl/meteo_test/API/GetJSON.php?year=2018&month=12&day=1&hour=12&sensor=0&operation=min
       let result =
-        "http://wachcio.pl/meteo_test/API/GetJSON.php?year=" +
+        "http://wachcio.pl/meteo_vue/API/GetJSON.php?year=" +
         this.year +
         "&sensor=" +
         this.sensorIndex;

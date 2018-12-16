@@ -29,9 +29,7 @@ export default {
   methods: {
     getJSON() {
       this.$emit("showInfoFun", false);
-      axios
-        .get(this.endpointCurrent)
-        .then(res => (this.sensorsCurrent = res.data));
+      this.$emit("getCurrentJSON");
     },
     hideInfo() {
       this.$emit("showInfoFun", false);
