@@ -26,6 +26,10 @@
       </div>
     </div>
     <Preloader v-if="!isLoaded"/>
+    <footer>
+      <hr>
+      <div>&copy;2018 Wachcio</div>
+    </footer>
   </div>
 </template>
 
@@ -170,5 +174,13 @@ hr,
 
 .hr2 {
   width: 65%;
+}
+footer {
+  display: flex;
+  flex-direction: column;
+  width: 100wv;
+  flex-basis: 100%;
+  align-items: center;
+  padding: 20px;
 }
 </style>
