@@ -60,7 +60,7 @@ export default {
   created() {
     // debugger;
     window.addEventListener("scroll", this.handleScroll);
-    this.getCurrentJSON();
+    this.refreshData();
   },
 
   destroyed() {
@@ -75,6 +75,10 @@ export default {
         .get(this.endpointCurrent)
         .then(res => (this.sensorsCurrent = res.data))
         .then((this.isLoaded = true));
+    },
+    refreshData() {
+      this.getCurrentJSON();
+      setTimeout(this.refreshData, 60000);
     },
 
     showInfoFun(visible) {
