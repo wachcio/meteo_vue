@@ -105,6 +105,7 @@ export default {
             for (let sensor of this.sensorsCurrent) {
               if (sensor.sensorName == "Kierunek wiatru") {
                 sensor.valueCurrent.value = "bezwietrznie";
+                sensor.picture = "assets/strzalka_przezroczysta.png";
               }
             }
           }

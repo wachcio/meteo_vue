@@ -33,8 +33,8 @@ if ($kat>360) {
     $kat=0;
 }
 
-$wskaznik='../img/windArrow.png';
-$tlo_obrazu='../img/windBackground.png';
+$wskaznik='../assets/windArrow.png';
+$tlo_obrazu='../assets/windBackground.png';
 //
 //$wskaznik='http://wachcio.pl/meteo_test/img/roza_wiatrow_wskaznik.png';
 //$tlo_obrazu='http://wachcio.pl/meteo_test/img/roza_tlo.png';

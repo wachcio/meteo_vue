@@ -17,7 +17,7 @@ export default {
 
       if (sensor.sensorName === "Kierunek wiatru") {
         // picture = "./" + sensor.picture; //dla serwera produkcyjnego
-        picture = "http://wachcio.pl/meteo_test/" + sensor.picture; //dla serwera lokalnego
+        picture = "http://wachcio.pl/meteo_vue/" + sensor.picture; //dla serwera lokalnego
       } else {
         picture = "./assets/" + sensor.picture;
       }
