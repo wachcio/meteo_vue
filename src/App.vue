@@ -72,7 +72,7 @@ export default {
   },
   watch: {
     sensorsCurrent(newValue, oldValue) {
-      console.log(newValue[2].valueCurrent.value);
+      // console.log(newValue);
 
       this.checkWindSpeed0();
     }
