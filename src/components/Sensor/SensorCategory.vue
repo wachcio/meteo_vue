@@ -1,6 +1,6 @@
 <template>
   <div class="readings" v-if="activeSection=='current'">
-    <div class="wrapper">
+    <div class="wrapper" v-if="sensorsCurrent.length>0">
       <div class="sensorTitle" v-for="n in 4" :key="n">
         <div class="hrWrapper" v-if="n>1">
           <hr class="hr1">
@@ -49,7 +49,6 @@ export default {
   data() {
     return {
       newCategoryIndex: [0, 16, 30, 34],
-      sensorData: {},
       currentDate: undefined
     };
   },
@@ -78,7 +77,6 @@ export default {
     },
     timer() {
       this.currentDate = new Date();
-
       setTimeout(this.timer, 1000);
     }
   },

@@ -28,7 +28,7 @@
     <Preloader v-if="!isLoaded"/>
     <footer>
       <hr>
-      <div>&copy;2018 Wachcio</div>
+      <div>Wachcio &copy; 2018</div>
     </footer>
   </div>
 </template>
@@ -70,6 +70,13 @@ export default {
   destroyed() {
     window.removeEventListener("scroll", this.handleScroll);
   },
+  watch: {
+    sensorsCurrent(newValue, oldValue) {
+      console.log(newValue[2].valueCurrent.value);
+
+      this.checkWindSpeed0();
+    }
+  },
   methods: {
     handleScroll(event) {
       this.showInfoFun(false);
@@ -90,6 +97,19 @@ export default {
     },
     activeSectionFun(section) {
       this.activeSection = section;
+    },
+    checkWindSpeed0() {
+      for (let sensor of this.sensorsCurrent) {
+        if (sensor.sensorName == "Prędkość wiatru km/h") {
+          if (sensor.valueCurrent.value == 0) {
+            for (let sensor of this.sensorsCurrent) {
+              if (sensor.sensorName == "Kierunek wiatru") {
+                sensor.valueCurrent.value = "bezwietrznie";
+              }
+            }
+          }
+        }
+      }
     }
   }
 };
@@ -178,7 +198,6 @@ hr,
 footer {
   display: flex;
   flex-direction: column;
-  width: 100wv;
   flex-basis: 100%;
   align-items: center;
   padding: 20px;
