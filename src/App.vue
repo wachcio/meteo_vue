@@ -11,19 +11,21 @@
         @showInfoFun="showInfoFun"
         @getCurrentJSON="getCurrentJSON"
       />
+      <keep-alive>
+        <component
+          :is="activeSection"
+          :sensorsCurrent="sensorsCurrent"
+          :isLoaded="isLoaded"
+          :showInfo="showInfo"
+          :activeSection="activeSection"
+          @activeSectionFun="activeSectionFun"
+          @showInfoFun="showInfoFun"
+        >
+          <SensorCategory/>
 
-      <SensorCategory
-        :sensorsCurrent="sensorsCurrent"
-        :isLoaded="isLoaded"
-        :showInfo="showInfo"
-        :activeSection="activeSection"
-        @activeSectionFun="activeSectionFun"
-        @showInfoFun="showInfoFun"
-      />
-      <AirQualityWidget v-if="activeSection=='current'"/>
-      <div v-show="activeSection=='archives'">
-        <ArchivesMain/>
-      </div>
+          <ArchivesMain/>
+        </component>
+      </keep-alive>
     </div>
     <Preloader v-if="!isLoaded"/>
     <footer>
@@ -37,7 +39,6 @@
 import axios from "axios";
 import SensorCategory from "./components/Sensor/SensorCategory.vue";
 import Nav from "./components/Nav/Nav.vue";
-import AirQualityWidget from "./components/Sensor/AirQualityWidget";
 import Preloader from "./components/Preloader";
 import ArchivesMain from "./components/Archives/ArchivesMain";
 
@@ -51,13 +52,12 @@ export default {
       sensorsCurrent: [],
       isLoaded: false,
       showInfo: false,
-      activeSection: "current"
+      activeSection: "SensorCategory"
     };
   },
   components: {
     SensorCategory,
     Nav,
-    AirQualityWidget,
     Preloader,
     ArchivesMain
   },

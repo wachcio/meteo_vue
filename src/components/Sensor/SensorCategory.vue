@@ -1,6 +1,6 @@
 <template>
-  <div class="readings" v-if="activeSection=='current'">
-    <div class="wrapper" v-if="sensorsCurrent.length>0">
+  <div class="readings" v-if="sensorsCurrent.length>0">
+    <div class="wrapper">
       <div class="sensorTitle" v-for="n in 4" :key="n">
         <div class="hrWrapper" v-if="n>1">
           <hr class="hr1">
@@ -22,6 +22,7 @@
         </div>
       </div>
     </div>
+    <AirQualityWidget/>
     <Transition name="fade">
       <InfoBox
         :sensorData="sensorData"
@@ -38,13 +39,14 @@
 import Sensor from "./Sensor";
 import InfoBox from "./InfoBox";
 
+import AirQualityWidget from "./AirQualityWidget";
+
 export default {
   name: "SensorCategory",
   props: {
     sensorsCurrent: Array,
     isLoaded: Boolean,
-    showInfo: Boolean,
-    activeSection: String
+    showInfo: Boolean
   },
   data() {
     return {
@@ -82,7 +84,8 @@ export default {
   },
   components: {
     Sensor,
-    InfoBox
+    InfoBox,
+    AirQualityWidget
   },
   watch: {
     // sensorsCurrent

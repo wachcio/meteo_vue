@@ -4,13 +4,13 @@
       <div class="item refresh" @click="getJSON">Odśwież dane</div>
       <div
         class="item current"
-        :class="checkActive('current')"
-        @click="changeSection('current')"
+        :class="checkActive('SensorCategory')"
+        @click="changeSection('SensorCategory')"
       >Odczyty aktualne</div>
       <div
         class="item archive"
-        :class="checkActive('archives')"
-        @click="changeSection('archives')"
+        :class="checkActive('ArchivesMain')"
+        @click="changeSection('ArchivesMain')"
       >Odczyty archiwalne</div>
     </div>
   </nav>
@@ -35,7 +35,7 @@ export default {
       this.$emit("showInfoFun", false);
     },
     changeSection(section) {
-      if (section == "current") {
+      if (section == "SensorCategory") {
         this.getJSON();
       }
       this.$emit("activeSectionFun", section);
