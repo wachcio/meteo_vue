@@ -116,7 +116,7 @@ export default {
 };
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .bacground {
   left: 50%;
   top: 50%;

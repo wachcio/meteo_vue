@@ -20,7 +20,7 @@ export default {
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style type="scss" scoped>
+<style lang="scss" scoped>
 #preloader {
   position: fixed;
   height: 128px;

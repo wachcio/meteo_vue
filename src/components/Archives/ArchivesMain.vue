@@ -35,7 +35,7 @@ export default {
 };
 </script>
 
-<style type="scss">
+<style lang="scss">
 .container {
   display: flex;
   flex-direction: column;

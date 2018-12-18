@@ -22,7 +22,7 @@ export default {
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style type="scss" scoped>
+<style lang="scss" scoped>
 div {
   text-align: center;
 }

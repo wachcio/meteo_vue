@@ -223,7 +223,7 @@ export default {
 };
 </script>
 
-<style type="scss" scoped>
+<style lang="scss" scoped>
 .wrapper {
   flex-direction: column;
   justify-content: center;

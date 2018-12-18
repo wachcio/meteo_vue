@@ -1,3 +1,4 @@
+import "./css/main.scss";
 import Vue from "vue";
 import App from "./App.vue";
 
