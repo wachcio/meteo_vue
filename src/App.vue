@@ -129,7 +129,7 @@ body {
   background-color: #0369ba;
   color: #c7eafd;
   font-family: "Lato", sans-serif;
-  font-size: 19px;
+  font-size: 17px;
   font-style: italic;
   scrollbar-3dlight-color: #e3edef;
   scrollbar-arrow-color: #c7eafd;
