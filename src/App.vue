@@ -12,7 +12,13 @@
         @showInfoFun="showInfoFun"
         @getCurrentJSON="getCurrentJSON"
       />
-      <transition name="slide" mode="out-in" appear>
+      <!-- <transition name="slide" mode="out-in" appear> -->
+      <transition
+        mode="out-in"
+        appear
+        enter-active-class="animated lightSpeedIn"
+        leave-active-class="animated lightSpeedOut"
+      >
         <keep-alive>
           <component
             v-if="isLoaded"
