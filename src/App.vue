@@ -1,7 +1,8 @@
 <template>
   <div id="main">
-    <section id="pageTitle">Stacja meteo Rypin</section>
-    <div v-if="isLoaded">
+    <section v-if="sensorsCurrent.length>0" id="pageTitle">Stacja meteo Rypin</section>
+
+    <div>
       <Nav
         :endpointCurrent="endpointCurrent"
         :isLoaded="isLoaded"
@@ -11,21 +12,24 @@
         @showInfoFun="showInfoFun"
         @getCurrentJSON="getCurrentJSON"
       />
-      <keep-alive>
-        <component
-          :is="activeSection"
-          :sensorsCurrent="sensorsCurrent"
-          :isLoaded="isLoaded"
-          :showInfo="showInfo"
-          :activeSection="activeSection"
-          @activeSectionFun="activeSectionFun"
-          @showInfoFun="showInfoFun"
-        >
-          <SensorCategory/>
+      <transition name="slide" mode="out-in" appear>
+        <keep-alive>
+          <component
+            v-if="isLoaded"
+            :is="activeSection"
+            :sensorsCurrent="sensorsCurrent"
+            :isLoaded="isLoaded"
+            :showInfo="showInfo"
+            :activeSection="activeSection"
+            @activeSectionFun="activeSectionFun"
+            @showInfoFun="showInfoFun"
+          >
+            <SensorCategory/>
 
-          <ArchivesMain/>
-        </component>
-      </keep-alive>
+            <ArchivesMain/>
+          </component>
+        </keep-alive>
+      </transition>
     </div>
     <Preloader v-if="!isLoaded"/>
     <footer>
@@ -202,5 +206,18 @@ footer {
   flex-basis: 100%;
   align-items: center;
   padding: 20px;
+}
+.slide-enter-active,
+.slide-leave-active {
+  transition: all 0.4s ease-in-out;
+}
+.slide-enter {
+  transform: translateX(-100vw);
+  opacity: 0;
+}
+
+.slide-leave-to {
+  transform: translateX(100vw);
+  opacity: 0;
 }
 </style>

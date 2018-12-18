@@ -7,19 +7,23 @@
           <hr class="hr2">
           <hr>
         </div>
-        <h1>{{h1Title(sensorsCurrent[newCategoryIndex[n-1]])}}</h1>
-        <div class="sensorWrapper">
-          <div v-for="(sensorCurrent, i) in sensorsToCategory(n)" :key="i">
-            <Sensor
-              :sensorCurrent="sensorCurrent"
-              :showInfo="showInfo"
-              :currentDate="currentDate"
-              @timer="timer"
-              @showInfoFun="showInfoFun"
-              @sensorActiveData="sensorActiveData"
-            />
+        <h1
+          @click="categoryVisible[n-1]=!categoryVisible[n-1]"
+        >{{h1Title(sensorsCurrent[newCategoryIndex[n-1]])}}</h1>
+        <transition name="hideShowSection">
+          <div class="sensorWrapper" v-if="categoryVisible[n-1]">
+            <div v-for="(sensorCurrent, i) in sensorsToCategory(n)" :key="i">
+              <Sensor
+                :sensorCurrent="sensorCurrent"
+                :showInfo="showInfo"
+                :currentDate="currentDate"
+                @timer="timer"
+                @showInfoFun="showInfoFun"
+                @sensorActiveData="sensorActiveData"
+              />
+            </div>
           </div>
-        </div>
+        </transition>
       </div>
     </div>
     <AirQualityWidget/>
@@ -51,7 +55,8 @@ export default {
   data() {
     return {
       newCategoryIndex: [0, 16, 30, 34],
-      currentDate: undefined
+      currentDate: undefined,
+      categoryVisible: [true, true, true, true, true]
     };
   },
   methods: {
@@ -157,5 +162,18 @@ hr,
 .hrWrapper {
   position: relative;
   text-align: center;
+}
+.hideShowSection-enter-active,
+.hideShowSection-leave-active {
+  transition: all 0.4s ease-in-out;
+}
+.hideShowSection-enter {
+  transform: translateX(-100vw);
+  opacity: 1;
+}
+
+.hideShowSection-leave-to {
+  transform: translateX(100vw);
+  opacity: 0;
 }
 </style>
