@@ -13,12 +13,7 @@
         @getCurrentJSON="getCurrentJSON"
       />
       <!-- <transition name="slide" mode="out-in" appear> -->
-      <transition
-        mode="out-in"
-        appear
-        enter-active-class="animated lightSpeedIn"
-        leave-active-class="animated lightSpeedOut"
-      >
+      <AnimateCSS enter="lightSpeedIn" leave="lightSpeedOut">
         <keep-alive>
           <component
             v-if="isLoaded"
@@ -35,7 +30,7 @@
             <ArchivesMain/>
           </component>
         </keep-alive>
-      </transition>
+      </AnimateCSS>
     </div>
     <Preloader v-if="!isLoaded"/>
     <footer>
@@ -51,6 +46,7 @@ import SensorCategory from "./components/Sensor/SensorCategory.vue";
 import Nav from "./components/Nav/Nav.vue";
 import Preloader from "./components/Preloader";
 import ArchivesMain from "./components/Archives/ArchivesMain";
+import AnimateCSS from "./components/CSS/AnimateCSS";
 
 export default {
   name: "app",
@@ -69,7 +65,8 @@ export default {
     SensorCategory,
     Nav,
     Preloader,
-    ArchivesMain
+    ArchivesMain,
+    AnimateCSS
   },
   created() {
     // debugger;

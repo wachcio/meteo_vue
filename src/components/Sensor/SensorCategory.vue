@@ -11,12 +11,7 @@
           @click="categoryVisible[n-1]=!categoryVisible[n-1]"
         >{{h1Title(sensorsCurrent[newCategoryIndex[n-1]])}}</h1>
         <!-- <transition name="hideShowSection"> -->
-        <transition
-          mode="out-in"
-          appear
-          enter-active-class="animated lightSpeedIn"
-          leave-active-class="animated lightSpeedOut"
-        >
+        <AnimateCSS enter="lightSpeedIn" leave="lightSpeedOut" appear>
           <div class="sensorWrapper" v-if="categoryVisible[n-1]">
             <div v-for="(sensorCurrent, i) in sensorsToCategory(n)" :key="i">
               <Sensor
@@ -29,7 +24,7 @@
               />
             </div>
           </div>
-        </transition>
+        </AnimateCSS>
       </div>
     </div>
     <AirQualityWidget/>
@@ -50,6 +45,7 @@ import Sensor from "./Sensor";
 import InfoBox from "./InfoBox";
 
 import AirQualityWidget from "./AirQualityWidget";
+import AnimateCSS from "../CSS/AnimateCSS";
 
 export default {
   name: "SensorCategory",
@@ -96,7 +92,8 @@ export default {
   components: {
     Sensor,
     InfoBox,
-    AirQualityWidget
+    AirQualityWidget,
+    AnimateCSS
   },
   watch: {
     // sensorsCurrent
