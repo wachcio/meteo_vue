@@ -15,7 +15,7 @@ body {
    background-color: $bacgroundColor;
    color: $textColor;
    font-family: "Lato", sans-serif;
-   font-size: 20px;
+   font-size: 17px;
    font-style: italic;
    scrollbar-3dlight-color: #e3edef;
    scrollbar-arrow-color: $textColor;
@@ -26,64 +26,64 @@ body {
    scrollbar-track-color: $bacgroundColor;
    text-shadow: 4px 4px 11px rgba(0, 0, 0, 1);
    scrollbar-base-color: $textColor;
+}
+h1 {
+   text-align: center;
+   font-size: 30px;
+   margin-top: 25px;
+   margin-bottom: 40px;
+   letter-spacing: 3px;
+}
 
-   h1 {
-      text-align: center;
-      font-size: 30px;
-      margin-top: 25px;
-      margin-bottom: 40px;
-      letter-spacing: 3px;
-   }
+#main {
+   margin-left: auto;
+   margin-right: auto;
+   width: 100vw;
+   min-width: 400px;
+   position: relative;
+   overflow: hidden;
+}
 
-   main {
-      margin-left: auto;
-      margin-right: auto;
-      min-width: 400px;
-      position: relative;
-      overflow: hidden;
-   }
+#pageTitle {
+   display: block;
+   left: 0;
+   margin-top: 20px;
+   min-width: 400px;
+   margin: 0 auto;
+   text-align: center;
+   font-size: 60px;
+   font-style: oblique;
+   padding-top: 55px;
+}
+p {
+   font-size: 15pt;
+   margin-top: 5px;
+}
 
-   #pageTitle {
-      display: block;
-      left: 0;
-      margin-top: 20px;
-      min-width: 400px;
-      margin: 0 auto;
-      text-align: center;
-      font-size: 60px;
-      font-style: oblique;
-      padding-top: 55px;
-   }
-   p {
-      font-size: 15pt;
-      margin-top: 5px;
-   }
+hr,
+.hr2,
+.hr3 {
+   color: $hrColor;
+   width: 70%;
+   background: $hrColor;
+   height: 1px;
+   border: 0px;
+   margin-top: 1px;
+   margin-bottom: 0;
+   padding: 0;
+}
 
-   hr,
-   .hr2,
-   .hr3 {
-      color: $hrColor;
-      width: 70%;
-      background: $hrColor;
-      height: 1px;
-      border: 0px;
-      margin-top: 1px;
-      margin-bottom: 0;
-      padding: 0;
-   }
+.hr1 {
+   width: 60%;
+}
 
-   .hr1 {
-      width: 60%;
-   }
-
-   .hr2 {
-      width: 65%;
-   }
-   footer {
-      display: flex;
-      flex-direction: column;
-      flex-basis: 100%;
-      align-items: center;
-      padding: 20px;
-   }
+.hr2 {
+   width: 65%;
+}
+footer {
+   display: flex;
+   flex-direction: column;
+   flex-basis: 100%;
+   align-items: center;
+   padding: 20px;
 }

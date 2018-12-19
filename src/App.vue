@@ -25,9 +25,11 @@
             @activeSectionFun="activeSectionFun"
             @showInfoFun="showInfoFun"
           >
-            <SensorCategory/>
+            <!-- <SensorCategory/>
 
-            <ArchivesMain/>
+            <ArchivesMain/>-->
+            <router-view></router-view>
+            <router-view></router-view>
           </component>
         </keep-alive>
       </AnimateCSS>
