@@ -12,25 +12,18 @@
         @showInfoFun="showInfoFun"
         @getCurrentJSON="getCurrentJSON"
       />
-      <!-- <transition name="slide" mode="out-in" appear> -->
+
       <AnimateCSS enter="lightSpeedIn" leave="lightSpeedOut">
         <keep-alive>
-          <component
+          <router-view
             v-if="isLoaded"
-            :is="activeSection"
             :sensorsCurrent="sensorsCurrent"
             :isLoaded="isLoaded"
             :showInfo="showInfo"
             :activeSection="activeSection"
             @activeSectionFun="activeSectionFun"
             @showInfoFun="showInfoFun"
-          >
-            <!-- <SensorCategory/>
-
-            <ArchivesMain/>-->
-            <router-view></router-view>
-            <router-view></router-view>
-          </component>
+          ></router-view>
         </keep-alive>
       </AnimateCSS>
     </div>

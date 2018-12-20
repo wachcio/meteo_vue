@@ -2,20 +2,20 @@
   <nav>
     <div class="container">
       <div class="item refresh" @click="getJSON">Odśwież dane</div>
-      <router-link to="/current">
-        <div
-          class="item current"
-          :class="checkActive('SensorCategory')"
-          @click="changeSection('SensorCategory')"
-        >Odczyty aktualne</div>
-      </router-link>
-      <router-link to="archive">
-        <div
-          class="item archive"
-          :class="checkActive('ArchivesMain')"
-          @click="changeSection('ArchivesMain')"
-        >Odczyty archiwalne</div>
-      </router-link>
+      <router-link
+        to="/current"
+        tag="div"
+        class="item current"
+        active-class="active"
+        exact
+      >Odczyty aktualne</router-link>
+      <router-link
+        to="archive"
+        tag="div"
+        class="item archive"
+        active-class="active"
+      >Odczyty archiwalne</router-link>
+      <router-link to="about" tag="div" class="item about" active-class="active">O projekcie</router-link>
     </div>
   </nav>
 </template>
@@ -86,11 +86,11 @@ nav {
 }
 
 .item:hover,
-.active {
-  background-color: #68bafb;
-}
 a {
   text-decoration: none;
+}
+.active {
+  background-color: #68bafb;
 }
 
 @media screen and (max-width: 1100px) {

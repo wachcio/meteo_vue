@@ -11,7 +11,7 @@
           @click="categoryVisible[n-1]=!categoryVisible[n-1]"
         >{{h1Title(sensorsCurrent[newCategoryIndex[n-1]])}}</h1>
         <!-- <transition name="hideShowSection"> -->
-        <AnimateCSS enter="lightSpeedIn" leave="lightSpeedOut" appear>
+        <AnimateCSS enter="lightSpeedIn" leave="lightSpeedOut">
           <div class="sensorWrapper" v-if="categoryVisible[n-1]">
             <div v-for="(sensorCurrent, i) in sensorsToCategory(n)" :key="i">
               <Sensor
