@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>Informacje o stacji meteo</h1>
+    <h1>{{$store.state.endpoints.endpointNames}}</h1>
   </div>
 </template>
 
