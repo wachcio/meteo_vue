@@ -74,7 +74,7 @@ export default {
   },
   methods: {
     handleScroll(event) {
-      this.showInfoFun(false);
+      this.$store.commit("showInfo", false);
     },
     timer() {
       this.$store.commit("timer", new Date());

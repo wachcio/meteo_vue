@@ -15,7 +15,8 @@ export default new Vuex.Store({
       sensorsCurrent: [],
       isLoaded: false,
       showInfo: false,
-      currentDate: undefined
+      currentDate: undefined,
+      sensorActive: undefined
    },
    getters: {
       //szablon funkcji
@@ -42,6 +43,9 @@ export default new Vuex.Store({
       },
       showInfo(state, payload) {
          state.showInfo = payload;
+      },
+      sensorActive(state, payload) {
+         state.sensorActive = payload;
       }
    },
    actions: {

@@ -33,7 +33,8 @@ export default {
   },
   methods: {
     clickSensor() {
-      return this.$store.commit("showInfo", true);
+      this.$store.commit("sensorActive", this.sensorCurrent);
+      this.$store.commit("showInfo", true);
     },
     diffDate(sensorDate) {
       let i1 = DateTime.fromSQL(sensorDate),

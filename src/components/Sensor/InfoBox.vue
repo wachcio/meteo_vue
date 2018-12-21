@@ -22,7 +22,7 @@ export default {
   },
   methods: {
     clickInfo() {
-      this.$emit("showInfoFun", false);
+      this.$store.commit("showInfo", false);
     },
     checkDate(sensorDate, minutes) {
       var dt = new Date(),
@@ -107,6 +107,11 @@ export default {
       }
 
       return result;
+    }
+  },
+  computed: {
+    sensorData() {
+      return this.$store.state.sensorActive;
     }
   },
   created() {

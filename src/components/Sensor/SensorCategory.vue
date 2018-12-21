@@ -22,7 +22,7 @@
     </div>
     <AirQualityWidget/>
     <Transition name="fade">
-      <InfoBox :sensorData="sensorData" v-if="showInfo"/>
+      <InfoBox v-if="this.$store.state.showInfo"/>
     </Transition>
   </div>
 </template>
