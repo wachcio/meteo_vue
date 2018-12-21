@@ -1,5 +1,5 @@
 <template>
-  <div class="container" v-if="isLoaded">
+  <div class="container">
     <h1>Archiwum odczytów</h1>
     <ArchivesForm :sensorsNames="sensorsNames"/>
   </div>
@@ -20,15 +20,14 @@ export default {
     return {
       sensorsNames: [],
       endpointNames:
-        "http://wachcio.pl/meteo_test/API/GetJSON.php?getSensorName=all",
-      isLoaded: false
+        "http://wachcio.pl/meteo_test/API/GetJSON.php?getSensorName=all"
     };
   },
   computed: {
     ...mapState(["sensorsCurrent", "isLoaded", "showInfo", "sensorActive"])
   },
   methods: {
-    ...mapMutations(["updateSensorsCurrent"]),
+    ...mapMutations(["updateSensorsCurrent", "isLoadedChange"]),
     ...mapActions(["getCurrentJSON"])
   },
   created() {
@@ -36,7 +35,7 @@ export default {
       axios
         .get(this.endpointNames)
         .then(res => (this.sensorsNames = res.data))
-        .then((this.isLoaded = true));
+        .then(this.$store.commit("isLoadedChange", true));
     }
   }
 };

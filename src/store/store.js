@@ -35,7 +35,7 @@ export default new Vuex.Store({
       updateSensorsCurrent(state, payload) {
          state.sensorsCurrent = payload;
       },
-      isLoaded(state, payload) {
+      isLoadedChange(state, payload) {
          state.isLoaded = payload;
       },
       timer(state, payload) {
@@ -52,11 +52,11 @@ export default new Vuex.Store({
       //Akcje są asynhroniczne np do JSON-a
       //akcje wywołujemy za pomocą dispatch z innych komponentów
       getCurrentJSON(context) {
-         // context.commit("isLoaded", false);
+         context.commit("isLoadedChange", false);
          axios
             .get(context.state.endpoints.endpointCurrent)
             .then(res => context.commit("updateSensorsCurrent", res.data))
-            .then(context.commit("isLoaded", true));
+            .then(context.commit("isLoadedChange", true));
       }
    }
 });

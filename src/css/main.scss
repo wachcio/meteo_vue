@@ -1,3 +1,5 @@
+@import "animateCSS";
+
 $bacgroundColor: #0369ba;
 $textColor: #c7eafd;
 $hrColor: #68bafb;
@@ -86,4 +88,5 @@ footer {
    flex-basis: 100%;
    align-items: center;
    padding: 20px;
+   margin-bottom: 40px;
 }

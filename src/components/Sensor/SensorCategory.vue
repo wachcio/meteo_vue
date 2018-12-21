@@ -1,5 +1,5 @@
 <template>
-  <div class="readings" v-if="sensorsCurrent.length>0">
+  <div class="readings" v-show="sensorsCurrent.length>0">
     <div class="wrapper">
       <div class="sensorTitle" v-for="n in 4" :key="n">
         <div class="hrWrapper" v-if="n>1">
@@ -10,9 +10,9 @@
         <h1
           @click="categoryVisible[n-1]=!categoryVisible[n-1]"
         >{{h1Title(sensorsCurrent[newCategoryIndex[n-1]])}}</h1>
-        <!-- <transition name="hideShowSection"> -->
+
         <AnimateCSS enter="lightSpeedIn" leave="lightSpeedOut">
-          <div class="sensorWrapper" v-if="categoryVisible[n-1]">
+          <div class="sensorWrapper" v-show="categoryVisible[n-1]">
             <div v-for="(sensorCurrent, i) in sensorsToCategory(n)" :key="i">
               <Sensor :sensorCurrent="sensorCurrent"/>
             </div>
@@ -42,7 +42,7 @@ export default {
     return {
       newCategoryIndex: [0, 16, 30, 34],
       currentDate: undefined,
-      categoryVisible: [true, true, true, true, true],
+      categoryVisible: [true, true, true, true],
       sensorData: undefined
     };
   },
@@ -86,7 +86,9 @@ export default {
     AnimateCSS
   },
   watch: {
-    // sensorsCurrent
+    // categoryVisible() {
+    //   this.$forceUpdate();
+    // }
   },
 
   created() {

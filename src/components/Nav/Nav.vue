@@ -1,6 +1,6 @@
 <template>
   <nav>
-    <div class="container">
+    <div class="container" v-if="this.isLoaded">
       <div class="item refresh" @click="getCurrentJSON()">Odśwież dane</div>
       <router-link
         to="/current"

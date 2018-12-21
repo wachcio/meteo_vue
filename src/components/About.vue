@@ -27,7 +27,8 @@ export default {
       "endpoints"
     ]),
     title() {
-      return this.endpoints.endpointCurrent;
+      // return this.endpoints.endpointCurrent;
+      return "Dawno, dawno temu...";
     }
   },
   created() {}

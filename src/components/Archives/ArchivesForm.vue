@@ -294,7 +294,9 @@ select:focus {
   /* background-color: #c7eafd; */
   /* color: #0369b2; */
 }
-
+input[type="submit"] {
+  padding: 7px 15px;
+}
 #archiveDay:disabled,
 #archiveHour:disabled {
   background-color: #68bafb;
