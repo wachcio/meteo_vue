@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="sensor" :title="sesnorHint" @click.prevent="clickSensor">
+    <div class="sensor" :title="sensorHint" @click.prevent="clickSensor">
       <SensorTitle :sensorCurrent="sensorCurrent"/>
       <SensorIcon :class="checkDate" :sensorCurrent="sensorCurrent"/>
       <SensorValues :sensorCurrent="sensorCurrent"/>
@@ -18,13 +18,12 @@ export default {
   name: "Sensor",
   props: {
     sensorCurrent: Object,
-    showInfo: Boolean,
     currentDate: Date
   },
   data() {
     return {
       upToDate: true,
-      sesnorHint: ""
+      sensorHint: ""
     };
   },
   components: {
@@ -33,11 +32,7 @@ export default {
     SensorValues
   },
   methods: {
-    clickSensor() {
-      this.$emit("showInfoFun", true);
-
-      this.$emit("sensorActiveData", this.sensorCurrent);
-    },
+    clickSensor() {},
     diffDate(sensorDate) {
       let i1 = DateTime.fromSQL(sensorDate),
         i2 = DateTime.local(),
@@ -63,8 +58,8 @@ export default {
 
       return result;
     },
-    hint() {
-      this.sesnorHint =
+    tooltip() {
+      this.sensorHint =
         "Ostatni odczyt " +
         this.sensorCurrent.valueCurrent.value +
         this.sensorCurrent.unit +
@@ -93,7 +88,7 @@ export default {
     currentDate(newValue, OldValue) {}
   },
   mounted() {
-    this.hint();
+    this.tooltip();
   }
 };
 </script>

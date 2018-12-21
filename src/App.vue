@@ -10,24 +10,15 @@
         :activeSection="activeSection"
         @activeSectionFun="activeSectionFun"
         @showInfoFun="showInfoFun"
-        @getCurrentJSON="getCurrentJSON"
       />
 
       <AnimateCSS enter="lightSpeedIn" leave="lightSpeedOut">
         <keep-alive>
-          <router-view
-            v-if="isLoaded"
-            :sensorsCurrent="sensorsCurrent"
-            :isLoaded="isLoaded"
-            :showInfo="showInfo"
-            :activeSection="activeSection"
-            @activeSectionFun="activeSectionFun"
-            @showInfoFun="showInfoFun"
-          ></router-view>
+          <router-view></router-view>
         </keep-alive>
       </AnimateCSS>
     </div>
-    <Preloader v-if="!isLoaded"/>
+    <Preloader/>
     <footer>
       <hr>
       <div>Wachcio &copy; 2018</div>
@@ -67,7 +58,7 @@ export default {
     // debugger;
     window.addEventListener("scroll", this.handleScroll);
     this.refreshData();
-    this.$store.dispatch("getCurrentJSON");
+    // this.$store.dispatch("getCurrentJSON");
     this.timer();
   },
 
@@ -89,14 +80,14 @@ export default {
       this.$store.commit("timer", new Date());
       setTimeout(this.timer, 1000);
     },
-    getCurrentJSON() {
-      axios
-        .get(this.endpointCurrent)
-        .then(res => (this.sensorsCurrent = res.data))
-        .then((this.isLoaded = true));
-    },
+    // getCurrentJSON() {
+    //   axios
+    //     .get(this.endpointCurrent)
+    //     .then(res => (this.sensorsCurrent = res.data))
+    //     .then((this.isLoaded = true));
+    // },
     refreshData() {
-      this.getCurrentJSON();
+      this.$store.dispatch("getCurrentJSON");
       setTimeout(this.refreshData, 60000);
     },
 

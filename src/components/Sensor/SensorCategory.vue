@@ -14,14 +14,7 @@
         <AnimateCSS enter="lightSpeedIn" leave="lightSpeedOut">
           <div class="sensorWrapper" v-if="categoryVisible[n-1]">
             <div v-for="(sensorCurrent, i) in sensorsToCategory(n)" :key="i">
-              <Sensor
-                :sensorCurrent="sensorCurrent"
-                :showInfo="showInfo"
-                :currentDate="currentDate"
-                @timer="timer"
-                @showInfoFun="showInfoFun"
-                @sensorActiveData="sensorActiveData"
-              />
+              <Sensor :sensorCurrent="sensorCurrent"/>
             </div>
           </div>
         </AnimateCSS>
@@ -29,13 +22,7 @@
     </div>
     <AirQualityWidget/>
     <Transition name="fade">
-      <InfoBox
-        :sensorData="sensorData"
-        :isLoaded="isLoaded"
-        :showInfo="showInfo"
-        v-if="showInfo"
-        @showInfoFun="showInfoFun"
-      />
+      <InfoBox :sensorData="sensorData" v-if="showInfo"/>
     </Transition>
   </div>
 </template>
@@ -49,11 +36,7 @@ import AnimateCSS from "../CSS/AnimateCSS";
 
 export default {
   name: "SensorCategory",
-  props: {
-    sensorsCurrent: Array,
-    isLoaded: Boolean,
-    showInfo: Boolean
-  },
+  props: {},
   data() {
     return {
       newCategoryIndex: [0, 16, 30, 34],
@@ -80,13 +63,14 @@ export default {
       } else {
         return null;
       }
+    }
+  },
+  computed: {
+    sensorsCurrent() {
+      return this.$store.state.sensorsCurrent;
     },
-    showInfoFun(visible) {
-      this.$emit("showInfoFun", visible);
-    },
-    timer() {
-      this.currentDate = new Date();
-      setTimeout(this.timer, 1000);
+    showInfo() {
+      return this.$store.state.showInfo;
     }
   },
   components: {
@@ -100,8 +84,8 @@ export default {
   },
 
   created() {
-    this.currentDate = new Date();
-    this.timer();
+    // this.currentDate = new Date();
+    // this.timer();
   }
 };
 </script>

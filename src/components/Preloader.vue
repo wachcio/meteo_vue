@@ -1,5 +1,5 @@
 <template>
-  <div id="preloader">
+  <div id="preloader" v-if="!isLoaded">
     <img src="/assets/preloader.png">
   </div>
 </template>
@@ -7,13 +7,16 @@
 <script>
 export default {
   name: "Sensor",
-  props: {
-    isLoaded: Boolean
-  },
+  props: {},
   data() {
     return {};
   },
   components: {},
+  computed: {
+    isLoaded() {
+      return this.$store.state.isLoaded;
+    }
+  },
   watch: {},
   methods: {}
 };

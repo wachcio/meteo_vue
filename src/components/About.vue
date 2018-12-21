@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>{{$store.state.endpoints.endpointNames}}</h1>
+    <h1>{{title}}</h1>
   </div>
 </template>
 
@@ -13,6 +13,11 @@ export default {
     return {};
   },
   methods: {},
+  computed: {
+    title() {
+      return this.$store.state.endpoints.endpointCurrent;
+    }
+  },
   created() {}
 };
 </script>

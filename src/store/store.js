@@ -44,8 +44,8 @@ export default new Vuex.Store({
    actions: {
       //Akcje są asynhroniczne np do JSON-a
       //akcje wywołujemy za pomocą dispatch z innych komponentów
-
-      getCurrentJSON(context, payload) {
+      getCurrentJSON(context) {
+         // context.commit("isLoaded", false);
          axios
             .get(context.state.endpoints.endpointCurrent)
             .then(res => context.commit("updateSensorsCurrent", res.data))
