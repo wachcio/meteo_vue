@@ -15,8 +15,7 @@ import { DateTime } from "luxon";
 export default {
   name: "InfoBox",
   props: {
-    sensorData: Object,
-    isLoaded: Boolean
+    sensorData: Object
   },
   data() {
     return {};

@@ -41,7 +41,8 @@ export default {
     return {
       newCategoryIndex: [0, 16, 30, 34],
       currentDate: undefined,
-      categoryVisible: [true, true, true, true, true]
+      categoryVisible: [true, true, true, true, true],
+      sensorData: undefined
     };
   },
   methods: {

@@ -32,7 +32,9 @@ export default {
     SensorValues
   },
   methods: {
-    clickSensor() {},
+    clickSensor() {
+      return this.$store.commit("showInfo", true);
+    },
     diffDate(sensorDate) {
       let i1 = DateTime.fromSQL(sensorDate),
         i2 = DateTime.local(),
@@ -85,7 +87,7 @@ export default {
   },
   computed: {},
   watch: {
-    currentDate(newValue, OldValue) {}
+    // currentDate(newValue, OldValue) {}
   },
   mounted() {
     this.tooltip();

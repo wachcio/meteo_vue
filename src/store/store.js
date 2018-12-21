@@ -39,6 +39,9 @@ export default new Vuex.Store({
       },
       timer(state, payload) {
          state.currentDate = payload;
+      },
+      showInfo(state, payload) {
+         state.showInfo = payload;
       }
    },
    actions: {
