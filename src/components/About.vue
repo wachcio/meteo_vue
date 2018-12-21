@@ -19,9 +19,15 @@ export default {
     ...mapActions(["getCurrentJSON"])
   },
   computed: {
-    ...mapState(["sensorsCurrent", "isLoaded", "showInfo", "sensorActive"]),
+    ...mapState([
+      "sensorsCurrent",
+      "isLoaded",
+      "showInfo",
+      "sensorActive",
+      "endpoints"
+    ]),
     title() {
-      return this.$store.state.endpoints.endpointCurrent;
+      return this.endpoints.endpointCurrent;
     }
   },
   created() {}
