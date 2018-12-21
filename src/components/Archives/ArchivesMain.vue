@@ -8,6 +8,7 @@
 <script>
 import axios from "axios";
 import ArchivesForm from "./ArchivesForm";
+import { mapState, mapMutations, mapActions, mapGetters } from "vuex";
 
 export default {
   name: "ArchivesMain",
@@ -23,7 +24,13 @@ export default {
       isLoaded: false
     };
   },
-  methods: {},
+  computed: {
+    ...mapState(["sensorsCurrent", "isLoaded", "showInfo", "sensorActive"])
+  },
+  methods: {
+    ...mapMutations(["updateSensorsCurrent"]),
+    ...mapActions(["getCurrentJSON"])
+  },
   created() {
     if (this.sensorsNames.length == 0) {
       axios

@@ -1,7 +1,7 @@
 <template>
   <nav>
     <div class="container">
-      <div class="item refresh" @click="getJSON">Odśwież dane</div>
+      <div class="item refresh" @click="getCurrentJSON()">Odśwież dane</div>
       <router-link
         to="/current"
         tag="div"
@@ -22,36 +22,17 @@
 
 <script>
 import axios from "axios";
+import { mapState, mapMutations, mapActions, mapGetters } from "vuex";
 
 export default {
   name: "Nav",
-  props: {
-    endpointCurrent: String,
-    showInfo: Boolean,
-    activeSection: String
+  props: {},
+  computed: {
+    ...mapState(["sensorsCurrent", "isLoaded", "showInfo"])
   },
   methods: {
-    getJSON() {
-      this.$emit("showInfoFun", false);
-      this.$emit("getCurrentJSON");
-    },
-    hideInfo() {
-      this.$emit("showInfoFun", false);
-    },
-    changeSection(section) {
-      if (section == "SensorCategory") {
-        this.getJSON();
-      }
-      this.$emit("activeSectionFun", section);
-    },
-    checkActive(section) {
-      if (section == this.activeSection) {
-        this.$emit("activeSectionFun", section);
-        return { active: true };
-      } else {
-        return null;
-      }
-    }
+    ...mapMutations(["updateSensorsCurrent"]),
+    ...mapActions(["getCurrentJSON"])
   }
 };
 </script>

@@ -5,6 +5,7 @@
 </template>
 
 <script>
+import { mapState, mapMutations, mapActions, mapGetters } from "vuex";
 export default {
   name: "Sensor",
   props: {},
@@ -13,9 +14,7 @@ export default {
   },
   components: {},
   computed: {
-    isLoaded() {
-      return this.$store.state.isLoaded;
-    }
+    ...mapState(["sensorsCurrent", "isLoaded", "showInfo", "sensorActive"])
   },
   watch: {},
   methods: {}

@@ -13,12 +13,13 @@ import SensorTitle from "./SensorTitle";
 import SensorIcon from "./SensorIcon";
 import SensorValues from "./SensorValues";
 import { DateTime } from "luxon";
+import { mapState, mapMutations, mapActions, mapGetters } from "vuex";
 
 export default {
   name: "Sensor",
   props: {
-    sensorCurrent: Object,
-    currentDate: Date
+    sensorCurrent: Object
+    // currentDate: Date
   },
   data() {
     return {
@@ -32,6 +33,8 @@ export default {
     SensorValues
   },
   methods: {
+    ...mapMutations(["updateSensorsCurrent"]),
+    ...mapActions(["getCurrentJSON"]),
     clickSensor() {
       this.$store.commit("sensorActive", this.sensorCurrent);
       this.$store.commit("showInfo", true);
@@ -86,9 +89,13 @@ export default {
       }
     }
   },
-  computed: {},
+  computed: {
+    ...mapState(["sensorsCurrent", "isLoaded", "showInfo", "sensorActive"])
+  },
   watch: {
-    // currentDate(newValue, OldValue) {}
+    currentDate(newValue, OldValue) {
+      this.tooltip();
+    }
   },
   mounted() {
     this.tooltip();

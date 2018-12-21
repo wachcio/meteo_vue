@@ -5,6 +5,8 @@
 </template>
 
 <script>
+import { mapState, mapMutations, mapActions, mapGetters } from "vuex";
+
 export default {
   name: "About",
   props: {},
@@ -12,8 +14,12 @@ export default {
   data() {
     return {};
   },
-  methods: {},
+  methods: {
+    ...mapMutations(["updateSensorsCurrent"]),
+    ...mapActions(["getCurrentJSON"])
+  },
   computed: {
+    ...mapState(["sensorsCurrent", "isLoaded", "showInfo", "sensorActive"]),
     title() {
       return this.$store.state.endpoints.endpointCurrent;
     }

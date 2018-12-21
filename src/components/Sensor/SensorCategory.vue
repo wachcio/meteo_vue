@@ -22,7 +22,7 @@
     </div>
     <AirQualityWidget/>
     <Transition name="fade">
-      <InfoBox v-if="this.$store.state.showInfo"/>
+      <InfoBox v-if="showInfo"/>
     </Transition>
   </div>
 </template>
@@ -33,6 +33,7 @@ import InfoBox from "./InfoBox";
 
 import AirQualityWidget from "./AirQualityWidget";
 import AnimateCSS from "../CSS/AnimateCSS";
+import { mapState, mapMutations, mapActions, mapGetters } from "vuex";
 
 export default {
   name: "SensorCategory",
@@ -46,6 +47,9 @@ export default {
     };
   },
   methods: {
+    ...mapMutations(["updateSensorsCurrent"]),
+    ...mapActions(["getCurrentJSON"]),
+
     sensorsToCategory: function(categoryNr) {
       return this.sensorsCurrent.filter(function(sensor) {
         return sensor.sensorCategoryNr == categoryNr;
@@ -67,12 +71,13 @@ export default {
     }
   },
   computed: {
-    sensorsCurrent() {
-      return this.$store.state.sensorsCurrent;
-    },
-    showInfo() {
-      return this.$store.state.showInfo;
-    }
+    ...mapState(["sensorsCurrent", "isLoaded", "showInfo", "sensorActive"])
+    // sensorsCurrent() {
+    //   return this.$store.state.sensorsCurrent;
+    // },
+    // showInfo() {
+    //   return this.$store.state.showInfo;
+    // }
   },
   components: {
     Sensor,
