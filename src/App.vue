@@ -67,6 +67,8 @@ export default {
     // debugger;
     window.addEventListener("scroll", this.handleScroll);
     this.refreshData();
+    this.$store.dispatch("getCurrentJSON");
+    this.timer();
   },
 
   destroyed() {
@@ -82,6 +84,10 @@ export default {
   methods: {
     handleScroll(event) {
       this.showInfoFun(false);
+    },
+    timer() {
+      this.$store.commit("timer", new Date());
+      setTimeout(this.timer, 1000);
     },
     getCurrentJSON() {
       axios

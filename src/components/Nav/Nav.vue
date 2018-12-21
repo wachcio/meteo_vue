@@ -10,7 +10,7 @@
         exact
       >Odczyty aktualne</router-link>
       <router-link
-        to="archive"
+        to="/archive"
         tag="div"
         class="item archive"
         active-class="active"
