@@ -19,3 +19,8 @@ export default {
 };
 </script>
 
+<style lang="sass" scoped>
+@import "animateCSS.css";
+</style>
+
+
