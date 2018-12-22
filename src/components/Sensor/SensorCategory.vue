@@ -8,11 +8,12 @@
           <hr>
         </div>
         <h1
-          @click="categoryVisible[n-1]=!categoryVisible[n-1]"
+          class="categoryTitle"
+          @click="categoryClick(n-1)"
         >{{h1Title(sensorsCurrent[newCategoryIndex[n-1]])}}</h1>
 
         <AnimateCSS enter="lightSpeedIn" leave="lightSpeedOut">
-          <div class="sensorWrapper" v-show="categoryVisible[n-1]">
+          <div class="sensorWrapper" v-if="categoryVisible[n-1]">
             <div v-for="(sensorCurrent, i) in sensorsToCategory(n)" :key="i">
               <Sensor :sensorCurrent="sensorCurrent"/>
             </div>
@@ -28,6 +29,7 @@
 </template>
 
 <script>
+import Vue from "vue";
 import Sensor from "./Sensor";
 import InfoBox from "./InfoBox";
 
@@ -68,6 +70,13 @@ export default {
       } else {
         return null;
       }
+    },
+    categoryClick(categoryIndex) {
+      this.categoryVisible.splice(
+        categoryIndex,
+        1,
+        !this.categoryVisible[categoryIndex]
+      );
     }
   },
   computed: {
@@ -170,5 +179,8 @@ hr,
 .hideShowSection-leave-to {
   transform: translateX(100vw);
   opacity: 0;
+}
+.categoryTitle {
+  cursor: pointer;
 }
 </style>
