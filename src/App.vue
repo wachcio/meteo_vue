@@ -49,7 +49,6 @@ export default {
     this.refreshData();
     this.timer();
   },
-
   destroyed() {
     window.removeEventListener("scroll", this.handleScroll);
   },
@@ -60,6 +59,9 @@ export default {
   },
   computed: {
     ...mapState(["sensorsCurrent", "isLoaded", "showInfo"])
+  },
+  getters: {
+    ...mapGetters(["winDirectionIndex"])
   },
   methods: {
     ...mapMutations(["updateSensorsCurrent"]),

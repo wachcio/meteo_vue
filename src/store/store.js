@@ -1,6 +1,7 @@
 import Vue from "vue";
 import Vuex from "vuex";
 import axios from "axios";
+import _ from "lodash";
 
 Vue.use(Vuex);
 
@@ -17,12 +18,19 @@ export default new Vuex.Store({
       showInfo: false,
       currentDate: undefined,
       sensorActive: undefined
+      // winSpeedIndex: undefined,
+      // windDirectionIndex: undefined
    },
    getters: {
       //szablon funkcji
       //    funkcja(message) {
       //   return state.message;
       //    }
+      // winSpeedIndex(state) {
+      //    return _.findIndex(state.sensorsCurrent, {
+      //       sensorName: "Prędkość wiatru km/h"
+      //    });
+      // }
    },
    mutations: {
       //Mutacje synhroniczne
@@ -34,7 +42,23 @@ export default new Vuex.Store({
       // }
       updateSensorsCurrent(state, payload) {
          state.sensorsCurrent = payload;
+         const indexSpeed = _.findIndex(state.sensorsCurrent, {
+            sensorName: "Prędkość wiatru km/h"
+         });
+         // state.winSpeedIndex = indexSpeed;
+         const indexDirection = _.findIndex(state.sensorsCurrent, {
+            sensorName: "Kierunek wiatru"
+         });
+         // state.windDirectionIndex = indexDirection;
+
+         if (state.sensorsCurrent[indexSpeed].valueCurrent.value == 0) {
+            state.sensorsCurrent[indexDirection].valueCurrent.value =
+               "bezwietrznie";
+            state.sensorsCurrent[indexDirection].picture =
+               "assets/strzalka_przezroczysta.png";
+         }
       },
+
       isLoadedChange(state, payload) {
          state.isLoaded = payload;
       },
@@ -46,6 +70,9 @@ export default new Vuex.Store({
       },
       sensorActive(state, payload) {
          state.sensorActive = payload;
+      },
+      changeWindSpeedIndex(state, payload) {
+         state.WindSpeedIndex = payload;
       }
    },
    actions: {
