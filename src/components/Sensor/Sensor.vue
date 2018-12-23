@@ -1,8 +1,9 @@
 <template>
   <div>
-    <div class="sensor" :title="sensorHint" @click.prevent="clickSensor">
+    <!-- <div class="sensor" @mouseenter="tooltip($event)" @click.prevent="clickSensor"> -->
+    <div class="sensor" @click.prevent="clickSensor">
       <SensorTitle :sensorCurrent="sensorCurrent"/>
-      <SensorIcon :class="checkDate" :sensorCurrent="sensorCurrent"/>
+      <SensorIcon :class="checkDate()" :sensorCurrent="sensorCurrent"/>
       <SensorValues :sensorCurrent="sensorCurrent"/>
     </div>
   </div>
@@ -35,14 +36,17 @@ export default {
   methods: {
     ...mapMutations(["updateSensorsCurrent"]),
     ...mapActions(["getCurrentJSON"]),
+
     clickSensor() {
       this.$store.commit("sensorActive", this.sensorCurrent);
       this.$store.commit("showInfo", true);
     },
-    diffDate(sensorDate) {
+    diffDate(sensorDate, event) {
+      // console.log(event);
+
       let i1 = DateTime.fromSQL(sensorDate),
         i2 = DateTime.local(),
-        // i2 = this.currentDate,
+        // i2 = event.timeStamp,
         diff = i2.diff(i1, ["days", "hours", "minutes", "seconds"]).toObject(),
         result = "";
 
@@ -64,21 +68,11 @@ export default {
 
       return result;
     },
-    tooltip() {
-      this.sensorHint =
-        "Ostatni odczyt " +
-        this.sensorCurrent.valueCurrent.value +
-        this.sensorCurrent.unit +
-        " (" +
-        this.diffDate(this.sensorCurrent.valueCurrent.date) +
-        " temu)";
 
-      // setTimeout(this.hint, 1000);
-    },
     checkDate() {
       let dtSensor = new Date(this.sensorCurrent.valueCurrent.date),
-        diff = Math.floor((this.currentDate - dtSensor) / 60000);
-      // console.log(diff);
+        diff = Math.floor((new Date() - dtSensor) / 60000);
+      console.log(diff);
 
       if (diff > 4) {
         return {
@@ -87,11 +81,26 @@ export default {
       } else {
         return {};
       }
+    },
+    tooltip(event) {
+      // console.log(event);
+
+      return (
+        "Ostatni odczyt " +
+        this.sensorCurrent.valueCurrent.value +
+        this.sensorCurrent.unit +
+        " (" +
+        this.diffDate(this.sensorCurrent.valueCurrent.date, event) +
+        " temu)"
+      );
+
+      // setTimeout(this.hint, 1000);
     }
   },
   computed: {
     ...mapState(["sensorsCurrent", "isLoaded", "showInfo", "sensorActive"])
   },
+
   watch: {
     currentDate(newValue, OldValue) {
       this.tooltip();
