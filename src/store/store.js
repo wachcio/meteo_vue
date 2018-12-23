@@ -57,6 +57,7 @@ export default new Vuex.Store({
             state.sensorsCurrent[indexDirection].picture =
                "assets/strzalka_przezroczysta.png";
          }
+         state.isLoaded = true;
       },
 
       isLoadedChange(state, payload) {
@@ -82,8 +83,7 @@ export default new Vuex.Store({
          context.commit("isLoadedChange", false);
          axios
             .get(context.state.endpoints.endpointCurrent)
-            .then(res => context.commit("updateSensorsCurrent", res.data))
-            .then(context.commit("isLoadedChange", true));
+            .then(res => context.commit("updateSensorsCurrent", res.data));
       }
    }
 });

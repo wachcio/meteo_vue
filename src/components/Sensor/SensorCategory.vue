@@ -1,5 +1,5 @@
 <template>
-  <div class="readings" v-show="sensorsCurrent.length>0">
+  <div class="readings" v-show="isLoaded">
     <div class="wrapper">
       <div class="sensorTitle" v-for="n in 4" :key="n">
         <div class="hrWrapper" v-if="n>1">

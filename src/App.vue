@@ -1,6 +1,6 @@
 <template>
   <div id="main">
-    <section v-if="sensorsCurrent.length>0" id="pageTitle">Stacja meteo Rypin</section>
+    <section id="pageTitle">Stacja meteo Rypin</section>
 
     <div>
       <Nav :endpointCurrent="endpointCurrent" :isLoaded="isLoaded" :showInfo="showInfo"/>
