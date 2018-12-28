@@ -72,7 +72,7 @@ export default {
     checkDate() {
       let dtSensor = new Date(this.sensorCurrent.valueCurrent.date),
         diff = Math.floor((new Date() - dtSensor) / 60000);
-      console.log(diff);
+      // console.log(diff);
 
       if (diff > 4) {
         return {

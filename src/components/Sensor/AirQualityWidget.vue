@@ -28,7 +28,7 @@ div {
 }
 iframe {
   max-width: 1200px;
-  width: 80vw;
+  width: 90vw;
   border: none;
   margin-bottom: 20px;
   /* height: 180px; */

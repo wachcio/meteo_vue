@@ -17,11 +17,12 @@
             <div v-for="(sensorCurrent, i) in sensorsToCategory(n)" :key="i">
               <Sensor :sensorCurrent="sensorCurrent"/>
             </div>
+            <AirQualityWidget v-if="n==4"/>
           </div>
         </AnimateCSS>
       </div>
     </div>
-    <AirQualityWidget/>
+
     <Transition name="fade">
       <InfoBox v-if="showInfo"/>
     </Transition>
