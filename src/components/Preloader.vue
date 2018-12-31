@@ -1,6 +1,6 @@
 <template>
   <div id="preloader" v-if="!isLoaded">
-    <img src="/assets/preloader.png">
+    <img src="../assets/preloader.png">
   </div>
 </template>
 

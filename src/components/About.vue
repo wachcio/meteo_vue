@@ -11,7 +11,7 @@
       >Nettemp</a> autorstwa techfreak. Mierzy on temperatury w kotłowni i na zewnątrz budynku za pomocą czujników DS18B20 oraz DHT22 (bardzo słabe i zawodne).
     </p>
     <p>
-      Po kilku miesiącach zacząłem myśleć nad własną stacją pogody która by oprócz temperatur mierzyła by również inne parametry i co najważniejsze była mojego autorstwa. Dzięki pomocy ze strony forum
+      Po kilku miesiącach zacząłem myśleć nad własną stacją pogody która mogła by oprócz temperatur mierzyła by również inne parametry i co najważniejsze była mojego autorstwa. Dzięki pomocy ze strony forum
       <a
         href="https://forum.atnel.pl/portal.php"
         target="_blank"
@@ -48,7 +48,7 @@ export default {
 };
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .wrapper {
 }
 p {
