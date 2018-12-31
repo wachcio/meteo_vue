@@ -1,5 +1,5 @@
 <template>
-  <div id="preloader" v-if="!isLoaded">
+  <div id="preloader" v-if="!isLoaded && !sensorsCurrent.length">
     <img src="../assets/preloader.png">
   </div>
 </template>
