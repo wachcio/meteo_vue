@@ -272,6 +272,11 @@ select {
   margin-bottom: 10px;
 }
 
+input[type="number"]:disabled {
+  // border: none;
+  opacity: 0.3;
+}
+
 input[type="submit"],
 select {
   /* width: 250px; */
