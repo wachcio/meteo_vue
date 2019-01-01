@@ -45,21 +45,24 @@
           :options="fluxOptions"
           :images="fluxImages"
           :transitions="fluxTransitions"
-          :captions="fluxCaptions"
           ref="slider"
         >
           <flux-controls slot="controls"></flux-controls>
           <flux-pagination slot="pagination"></flux-pagination>
         </vue-flux>
-
-        <!-- <button @click="$refs.slider.showImage('next')">NEXT</button> -->
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import { VueFlux, FluxPagination, FluxControls, Transitions } from "vue-flux";
+import {
+  VueFlux,
+  FluxPagination,
+  FluxControls,
+  Transitions,
+  FluxCaption
+} from "vue-flux";
 // import "vue-flux/dist/vue-flux.css";
 
 export default {
@@ -83,6 +86,7 @@ export default {
       "http://wachcio.pl/meteo_vue/assets/slider/IMG_5905.jpg",
       "http://wachcio.pl/meteo_vue/assets/slider/IMG_5925.jpg"
     ],
+    fluxCaptions: ["", "", "", "", "Widok czujników stacji meteo", ""],
     fluxTransitions: {
       transitionRound2: Transitions.transitionRound2
     }
@@ -90,7 +94,8 @@ export default {
   components: {
     VueFlux,
     FluxPagination,
-    FluxControls
+    FluxControls,
+    FluxCaption
   }
 };
 </script>
@@ -111,15 +116,13 @@ a {
   color: #c7eafd;
 }
 .sliderContainer {
-  // text-align: center;
-  transform: translateX(50%);
+  display: flex;
+  justify-content: center;
   width: 100vw;
   left: 0;
 }
 
 .sliderWrapper {
-  width: 80%;
-
-  transform: translateX(-50%);
+  width: 85%;
 }
 </style>
