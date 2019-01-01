@@ -8,9 +8,9 @@ var config = {
    port: 21,
    localRoot: __dirname + "/dist",
    remoteRoot: "/public_html/wachcio/meteo_vue",
-   // include: ['*', '**/*'],      // this would upload everything except dot files
-   include: ["dist/*"],
-   //exclude: ["dist/**/*.map"], // e.g. exclude sourcemaps - ** exclude: [] if nothing to exclude **
+   include: ["*", "/dist"], // this would upload everything except dot files
+   // include: ["/dist/index.html"],
+   exclude: ["dist/**/*.map"], // e.g. exclude sourcemaps - ** exclude: [] if nothing to exclude **
    deleteRemote: true, // delete existing files at destination before uploading
    forcePasv: true // Passive mode is forced (EPSV command is not sent)
 };
@@ -22,10 +22,10 @@ ftpDeploy
    .catch(err => console.log(err));
 
 // use with callback
-ftpDeploy.deploy(config, function(err, res) {
-   if (err) console.log(err);
-   else console.log("finished:", res);
-});
+// ftpDeploy.deploy(config, function(err, res) {
+//    if (err) console.log(err);
+//    else console.log("finished:", res);
+// });
 ftpDeploy.on("uploading", function(data) {
    //    console.log("Uploading: " + data);
 
