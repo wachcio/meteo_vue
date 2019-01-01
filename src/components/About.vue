@@ -70,12 +70,18 @@ export default {
       height: "auto"
     },
     fluxImages: [
-      "../assets/slider/meteo1.png",
-      "../assets/slider/meteo2.png",
-      "../assets/slider/meteo3.png",
-      "../assets/slider/meteo4.png",
-      "../assets/slider/IMG_5905.jpg",
-      "../assets/slider/IMG_5925.jpg"
+      // "../assets/slider/meteo1.png",
+      // "../assets/slider/meteo2.png",
+      // "../assets/slider/meteo3.png",
+      // "../assets/slider/meteo4.png",
+      // "../assets/slider/IMG_5905.jpg",
+      // "../assets/slider/IMG_5925.jpg"
+      "http://wachcio.pl/meteo_vue/assets/slider/meteo1.png",
+      "http://wachcio.pl/meteo_vue/assets/slider/meteo2.png",
+      "http://wachcio.pl/meteo_vue/assets/slider/meteo3.png",
+      "http://wachcio.pl/meteo_vue/assets/slider/meteo4.png",
+      "http://wachcio.pl/meteo_vue/assets/slider/IMG_5905.jpg",
+      "http://wachcio.pl/meteo_vue/assets/slider/IMG_5925.jpg"
     ],
     fluxTransitions: {
       transitionRound2: Transitions.transitionRound2

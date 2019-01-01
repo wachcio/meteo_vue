@@ -5,11 +5,11 @@
     <div>
       <Nav :endpointCurrent="endpointCurrent" :isLoaded="isLoaded" :showInfo="showInfo"/>
 
-      <!-- <AnimateCSS enter="lightSpeedIn" leave="lightSpeedOut"> -->
-      <keep-alive>
-        <router-view></router-view>
-      </keep-alive>
-      <!-- </AnimateCSS> -->
+      <AnimateCSS enter="lightSpeedIn" leave="lightSpeedOut">
+        <keep-alive>
+          <router-view></router-view>
+        </keep-alive>
+      </AnimateCSS>
     </div>
     <Preloader/>
     <footer>
@@ -45,6 +45,8 @@ export default {
   },
   created() {
     // debugger;
+    // console.log("test");
+
     window.addEventListener("scroll", this.handleScroll);
     this.refreshData();
     this.timer();

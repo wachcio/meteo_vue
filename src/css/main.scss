@@ -10,8 +10,11 @@ $buttonColor: #01335c;
 }
 
 body {
+   margin: 0;
+   padding: 0;
    display: flex;
-   flex-basis: 100%;
+   // flex-basis: 100%;
+   width: 100%;
    background-color: $bacgroundColor;
    color: $textColor;
    font-family: "Lato", sans-serif;
