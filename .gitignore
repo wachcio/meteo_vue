@@ -2,7 +2,7 @@
 node_modules
 dist/**/*.*
 deploy.js
-public/API/hideSettings/**/*.*
+public/API/hideSettings/**/*.php
 
 # local env files
 .env.local
