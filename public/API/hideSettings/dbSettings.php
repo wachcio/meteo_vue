@@ -1,5 +1,5 @@
 <?php
-
+ 
 class dbSettings
 {
     private $setting = [];
