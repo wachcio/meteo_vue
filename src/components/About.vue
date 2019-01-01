@@ -39,12 +39,53 @@
     </p>
     <p>Dane z wszystkich opisanych powyżej części systemu trafiają co minutę do bazy danych MySQL umieszczonej na zewnętrznym serwerze. Odbywa się to za pośrednictwem napisanych przeze mnie skryptów PHP. Dopiero z tej bazy poprzez mój mini system Rest API czerpie informacje ta strona. Jeśli jest problem z danym czujnikiem i z jakiegoś powodu dane są starsze niż 5 minut sygnalizowane to jest czerwoną obwódką wokół ikony czujnika. Po kliknięciu na czujnik pokazują się bardziej szczegółowe informacje. Natomist kliknięcie na tytuł kategorii powoduje jej ukrycie lub pokazanie.</p>
     <p>W zakładce `Odczyty archiwalne` można uzyskać podstawowe dane statystyczne (odczyt maksymalny, minimalny, średni i w niektórych wypadkach sumę) z czujników w danym przedziale czasowym: rok, miesiąc, dzień i godzina</p>
+    <div class="sliderContainer">
+      <div class="sliderWrapper">
+        <vue-flux
+          :options="fluxOptions"
+          :images="fluxImages"
+          :transitions="fluxTransitions"
+          :captions="fluxCaptions"
+          ref="slider"
+        >
+          <flux-controls slot="controls"></flux-controls>
+          <flux-pagination slot="pagination"></flux-pagination>
+        </vue-flux>
+
+        <!-- <button @click="$refs.slider.showImage('next')">NEXT</button> -->
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
+import { VueFlux, FluxPagination, FluxControls, Transitions } from "vue-flux";
+// import "vue-flux/dist/vue-flux.css";
+
 export default {
-  name: "About"
+  name: "About",
+  data: () => ({
+    fluxOptions: {
+      autoplay: true,
+      height: "auto"
+    },
+    fluxImages: [
+      "../assets/slider/meteo1.png",
+      "../assets/slider/meteo2.png",
+      "../assets/slider/meteo3.png",
+      "../assets/slider/meteo4.png",
+      "../assets/slider/IMG_5905.jpg",
+      "../assets/slider/IMG_5925.jpg"
+    ],
+    fluxTransitions: {
+      transitionRound2: Transitions.transitionRound2
+    }
+  }),
+  components: {
+    VueFlux,
+    FluxPagination,
+    FluxControls
+  }
 };
 </script>
 
@@ -62,5 +103,17 @@ p + p {
 a {
   // text-decoration: none;
   color: #c7eafd;
+}
+.sliderContainer {
+  // text-align: center;
+  transform: translateX(50%);
+  width: 100vw;
+  left: 0;
+}
+
+.sliderWrapper {
+  width: 80%;
+
+  transform: translateX(-50%);
 }
 </style>
