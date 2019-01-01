@@ -1,6 +1,5 @@
 .DS_Store
 node_modules
-/dist
 public/API/hideSettings/**/*.php
 
 # local env files
