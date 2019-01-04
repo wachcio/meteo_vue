@@ -65,10 +65,10 @@
 
         <p
           v-show="windDirectionIndex !== sensorIndex"
-        >Najwyższy odczyt: {{responseMax.value}}{{responseMax.unit}}</p>
+        >Najwyższy odczyt: {{responseMax.value}}{{responseMax.unit}} ({{responseMax.date}})</p>
         <p
           v-show="windDirectionIndex !== sensorIndex"
-        >Najniższy odczyt: {{responseMin.value}}{{responseMin.unit}}</p>
+        >Najniższy odczyt: {{responseMin.value}}{{responseMin.unit}} ({{responseMin.date}})</p>
         <p
           v-show="windDirectionIndex !== sensorIndex"
         >Średni odczyt: {{responseAvg.value}}{{responseAvg.unit}}</p>
@@ -113,7 +113,7 @@ export default {
     };
   },
   methods: {
-    formSend(e) {
+    formSend() {
       this.rainIndex = this.sensorsNames.findIndex(function(element) {
         return element == "Opady";
       });
@@ -205,13 +205,13 @@ export default {
     });
   },
   watch: {
-    useMonth(newValue, oldValue) {
+    useMonth(newValue) {
       if (newValue == false) {
         this.useDay = false;
         this.useHour = false;
       }
     },
-    useDay(newValue, oldValue) {
+    useDay(newValue) {
       if (newValue == false) {
         this.useHour = false;
       }

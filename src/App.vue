@@ -14,7 +14,7 @@
     <Preloader/>
     <footer>
       <hr>
-      <div>Wachcio &copy; 2018</div>
+      <div>Wachcio &copy; 2018-2019</div>
     </footer>
   </div>
 </template>

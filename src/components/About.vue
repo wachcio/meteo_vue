@@ -56,13 +56,7 @@
 </template>
 
 <script>
-import {
-  VueFlux,
-  FluxPagination,
-  FluxControls,
-  Transitions,
-  FluxCaption
-} from "vue-flux";
+import { VueFlux, FluxPagination, FluxControls, Transitions } from "vue-flux";
 // import "vue-flux/dist/vue-flux.css";
 
 export default {
@@ -94,26 +88,25 @@ export default {
   components: {
     VueFlux,
     FluxPagination,
-    FluxControls,
-    FluxCaption
+    FluxControls
   }
 };
 </script>
 
 <style lang="scss" scoped>
 .wrapper {
-}
-p {
-  margin: 1.5em 1.5em;
-  text-align: justify;
-}
-p + p {
-  text-indent: 2em;
-}
+  p {
+    margin: 1.5em 1.5em;
+    text-align: justify;
+  }
+  p + p {
+    text-indent: 2em;
+  }
 
-a {
-  // text-decoration: none;
-  color: #c7eafd;
+  a {
+    // text-decoration: none;
+    color: #c7eafd;
+  }
 }
 .sliderContainer {
   display: flex;
@@ -126,3 +119,6 @@ a {
   width: 85%;
 }
 </style>
+
+
+

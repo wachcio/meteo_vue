@@ -401,6 +401,7 @@ class Sensors
         $arr["picture"] = $picture;
         $arr["unit"] = $unit;
         $arr["operation"] = $operation;
+        // $arr["date"] = "";
 
         $arr["sensorCategoryTitle"] = $sensorType;
         // echo($sensorType);
@@ -408,8 +409,12 @@ class Sensors
             $arr["sensorCategoryNr"] = 1;
 
             if (($operation == "avg") || ($operation == "max") || ($operation == "min") || ($operation == "sum")) {
-                $query = "SELECT ".$operation."(`" . $fieldName . "`) AS `".$operation."` FROM  `AVR` WHERE YEAR( `data_odczytu`) = ". $year;
-
+                if ($operation == "avg" || $operation == "sum") {
+                $query = "SELECT ".$operation."(`" . $fieldName . "`) AS `".$operation."`, `data_odczytu` FROM  `AVR` WHERE YEAR( `data_odczytu`) = ". $year;
+                } 
+                if ($operation == "max" || $operation == "min") {
+                $query = "SELECT `" . $fieldName . "`AS `".$operation."`, `data_odczytu` FROM  `AVR` WHERE YEAR( `data_odczytu`) = ". $year;
+                }
                 if ($month>0 && $month<13){
                     $query = $query. " AND MONTH( `data_odczytu` ) = ".$month;
                 } else {
@@ -427,9 +432,24 @@ class Sensors
                 } else {
                     $hour=-1;
                 }
+
+                if ($operation == "max") {
+                    $query = $query. " ORDER BY `".$fieldName."` DESC LIMIT 1 ";
+                }
+                if ($operation == "min") {
+                    $query = $query. " ORDER BY `".$fieldName."` ASC LIMIT 1 ";
+                }
+
+                // echo($query);
                 
                 $arr["value"] = $db->getData($query);
+                if ($operation == "min" || $operation == "max") {
+                $arr["date"] = $arr["value"]["data_odczytu"];
+                }
                 $arr["value"] = $arr["value"][$operation];
+                
+                
+        
             }  
 
             if ($mathOperation == "temp") {
@@ -555,7 +575,7 @@ class Sensors
                 $arr["value"] = round($arr["value"], 0);
 
             }
-
+            
             
         }
         //  -----------------------RPi--------------------------
@@ -570,27 +590,40 @@ class Sensors
             }
 
             if (($operation == "avg") || ($operation == "max") || ($operation == "min")) {
-
-                $query = "SELECT ".$operation."(`value`) AS `".$operation."` FROM  `" . $tableName . "` WHERE YEAR( `time`) = ". $year;
+                if ($operation == "avg") {
+                $query = "SELECT ".$operation."(`value`) AS `".$operation."` FROM  `" . $tableName . "` WHERE YEAR( `data`) = ". $year;
+                }
+                if ($operation == "max" || $operation == "min") {
+                    $query = "SELECT `value` AS `".$operation."`, `data` FROM  `" . $tableName . "` WHERE YEAR( `data`) = ". $year;
+                    }
                 if ($month>0 && $month<13){
-                    $query = $query. " AND MONTH( `time` ) = ".$month;
+                    $query = $query. " AND MONTH( `data` ) = ".$month;
                 } else {
                     $month=-1;
                 }
 
                 if ($day>0 && $day<31){
-                    $query = $query. " AND DAY( `time` ) = ".$day;
+                    $query = $query. " AND DAY( `data` ) = ".$day;
                 } else {
                     $day=-1;
                 }
 
                 if ($hour>-1 && $hour<24){
-                    $query = $query. " AND HOUR( `time` ) = ".$hour;
+                    $query = $query. " AND HOUR( `data` ) = ".$hour;
                 } else {
                     $hour=-1;
                 }
+                if ($operation == "max") {
+                    $query = $query. " ORDER BY `value` DESC LIMIT 1 ";
+                }
+                if ($operation == "min") {
+                    $query = $query. " ORDER BY `value` ASC LIMIT 1 ";
+                }
                 
                 $arr["value"] = $db->getData($query);
+                if ($operation == "min" || $operation == "max") {
+                    $arr["date"] = $arr["value"]["data"];
+                    }
                 $arr["value"] = ROUND($arr["value"][$operation], 1);
             } 
             
@@ -602,7 +635,13 @@ class Sensors
             $arr["sensorCategoryNr"] = 4;
 
             if (($operation == "avg") || ($operation == "max") || ($operation == "min")) {
-                $query = "SELECT ".$operation."(`" . $fieldName . "`) AS `".$operation."` FROM  `pyl_warszawska` WHERE YEAR( `data_odczytu`) = ". $year;
+                if ($operation == "avg") {
+                    $query = "SELECT ".$operation."(`" . $fieldName . "`) AS `".$operation."` FROM  `pyl_warszawska` WHERE YEAR( `data_odczytu`) = ". $year;
+                    }
+                    if ($operation == "max" || $operation == "min") {
+                        $query = "SELECT `" . $fieldName . "` AS `".$operation."`, `data_odczytu` FROM  `pyl_warszawska` WHERE YEAR( `data_odczytu`) = ". $year;
+                        }
+                
 
                 //zagnieździć ify żeby wyeliminować możliwość podania godziny bez miesiąca itd
                 if ($month>0 && $month<13){
@@ -623,7 +662,19 @@ class Sensors
                     $hour=-1;
                 }
                 
+                if ($operation == "max") {
+                    $query = $query. " ORDER BY `" . $fieldName . "` DESC LIMIT 1 ";
+                }
+                if ($operation == "min") {
+                    $query = $query. " ORDER BY `" . $fieldName . "` ASC LIMIT 1 ";
+                }
+                
                 $arr["value"] = $db->getData($query);
+                if ($operation == "min" || $operation == "max") {
+                    $arr["date"] = $arr["value"]["data_odczytu"];
+                    }
+                
+            
                 $arr["value"] = ROUND($arr["value"][$operation], 1);
             } 
             
