@@ -291,7 +291,23 @@ class Sensors
         unset($arr["valueMax"]["id"]);
         unset($arr["valueMin"]["id"]);
 
-       
+        if ($alarmMin != "") {
+            if ($arr["valueCurrent"]["value"] < $alarmMin) {
+            $arr["alarmMin"] = true;
+            } else {
+                $arr["alarmMin"] = false;
+            }
+        }
+        
+        if ($alarmMax != "") {
+            if ($arr["valueCurrent"]["value"] > $alarmMax) {
+            $arr["alarmMax"] = true;
+            } else {
+                $arr["alarmMax"] = false;
+            }
+        }
+        
+        
 
         array_push($sensorsData, $arr);
 
