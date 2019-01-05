@@ -315,7 +315,7 @@ input[type="submit"] {
   margin-top: 20px;
 }
 label {
-  margin: 0 3px 0 3px;
+  // margin: 0 3px 0 3px;
 }
 
 @media screen and (max-width: 1100px) {

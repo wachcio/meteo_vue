@@ -1,7 +1,4 @@
-$bacgroundColor: #0369ba;
-$textColor: #c7eafd;
-$hrColor: #68bafb;
-$buttonColor: #01335c;
+@import "./common";
 
 * {
    margin: 0;
@@ -10,29 +7,29 @@ $buttonColor: #01335c;
 }
 
 body {
-   margin: 0;
-   padding: 0;
+   // margin: 0;
+   // padding: 0;
    display: flex;
-   // flex-basis: 100%;
-   width: 100%;
+   flex-basis: 100%;
+   // width: 100%;
    background-color: $bacgroundColor;
    color: $textColor;
    font-family: "Lato", sans-serif;
    font-size: 17px;
    font-style: italic;
-   scrollbar-3dlight-color: #e3edef;
-   scrollbar-arrow-color: $textColor;
-   scrollbar-darkshadow-color: $bacgroundColor;
-   scrollbar-face-color: $bacgroundColor;
-   scrollbar-highlight-color: $textColor;
-   scrollbar-shadow-color: $textColor;
-   scrollbar-track-color: $bacgroundColor;
+   // scrollbar-3dlight-color: #e3edef;
+   // scrollbar-arrow-color: $textColor;
+   // scrollbar-darkshadow-color: $bacgroundColor;
+   // scrollbar-face-color: $bacgroundColor;
+   // scrollbar-highlight-color: $textColor;
+   // scrollbar-shadow-color: $textColor;
+   // scrollbar-track-color: $bacgroundColor;
    text-shadow: 4px 4px 11px rgba(0, 0, 0, 1);
-   scrollbar-base-color: $textColor;
+   // scrollbar-base-color: $textColor;
 }
 h1 {
    text-align: center;
-   font-size: 30px;
+   font-size: 1.8em;
    margin-top: 25px;
    margin-bottom: 40px;
    letter-spacing: 3px;
@@ -42,7 +39,7 @@ h1 {
    margin-left: auto;
    margin-right: auto;
    width: 100vw;
-   min-width: 400px;
+   // min-width: 400px;
    position: relative;
    overflow: hidden;
 }
@@ -51,15 +48,15 @@ h1 {
    display: block;
    left: 0;
    margin-top: 20px;
-   min-width: 400px;
+   // min-width: 400px;
    margin: 0 auto;
    text-align: center;
-   font-size: 60px;
+   font-size: 3.5em;
    font-style: oblique;
    padding-top: 55px;
 }
 p {
-   font-size: 15pt;
+   font-size: 1.2rem;
    margin-top: 5px;
 }
 

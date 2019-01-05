@@ -38,15 +38,15 @@ export default {
         switch (unitNr) {
           case 1:
             return sensor.valueCurrent.value + " " + sensor.unit;
-            break;
+          // break;
 
           case 2:
             return sensor.valueMax.value + " " + sensor.unit;
-            break;
+          // break;
 
           case 3:
             return sensor.valueMin.value + " " + sensor.unit;
-            break;
+          // break;
         }
       } else {
         switch (unitNr) {
@@ -83,12 +83,14 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="scss" scoped>
+@import "../../css/_common";
 .value {
   text-align: right;
   font-style: oblique;
   margin-top: 3px;
   // margin-right: 5px;
   padding-right: 7px;
+  color: $textColor;
 }
 .value > img {
   margin-bottom: -8px;
@@ -117,6 +119,6 @@ export default {
 }
 
 .alarmMin {
-  @include alarm(blue);
+  @include alarm(rgb(0, 4, 248));
 }
 </style>

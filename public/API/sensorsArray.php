@@ -1,8 +1,8 @@
 <?php
 
 $sensorsDetail = Array(
-    0 => array("Temperatura", "AVR", "temperatura", "Odczyty z AVR", "temp", "temperatura_na_zewnatrz.png", "°C", "-10", "28"),
-    1 => array("Temperatura w urządzeniu", "AVR", "temperatura2", "Odczyty z AVR", "temp", "temperatura_raspberry.png", "°C", "", ""),
+    0 => array("Temperatura", "AVR", "temperatura", "Odczyty z AVR", "temp", "temperatura_na_zewnatrz.png", "°C", "-5", "28"),
+    1 => array("Temperatura w urządzeniu", "AVR", "temperatura2", "Odczyty z AVR", "temp", "temperatura_raspberry.png", "°C", "-1", "50"),
     2 => array("Prędkość wiatru km/h", "AVR", "predkosc_wiatru", "Odczyty z AVR", "wiatrKM", "wiatr.png", "km/h", "", "50"),
     3 => array("Prędkość wiatru m/s", "AVR", "predkosc_wiatru", "Odczyty z AVR", "wiatrMS", "wiatr_ms.png", "m/s", "", "13,88"),
     4 => array("Poryw wiatru km/h", "AVR", "poryw_wiatru", "Odczyty z AVR", "porywWiatrKM", "porywy_wiatru.png", "km/h", "", "70"),
