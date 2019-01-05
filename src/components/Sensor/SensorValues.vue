@@ -5,7 +5,7 @@
         v-if="sensorCurrent.sensorName !== 'Kierunek wiatru'"
         v-bind:src="'./assets/strzalka_przezroczysta.png'"
       >
-      {{sensorValue(sensorCurrent, 1)}}
+      <div :class="checkAlarms">{{sensorValue(sensorCurrent, 1)}}</div>
     </div>
     <div class="value">
       <img
@@ -66,6 +66,17 @@ export default {
         return unit;
       }
     }
+  },
+  computed: {
+    checkAlarms() {
+      if (this.sensorCurrent.alarmMax) {
+        return "alarmMax";
+      } else if (this.sensorCurrent.alarmMin) {
+        return "alarmMin";
+      } else {
+        return "";
+      }
+    }
   }
 };
 </script>
@@ -76,7 +87,7 @@ export default {
   text-align: right;
   font-style: oblique;
   margin-top: 3px;
-  /*    width: 130px;*/
+  // margin-right: 5px;
   padding-right: 7px;
 }
 .value > img {
@@ -91,5 +102,21 @@ export default {
 
 .center {
   text-align: center;
+}
+
+@mixin alarm($color) {
+  border: 0 solid $color;
+  border-radius: 7px;
+  background-color: $color;
+  padding-right: 7px;
+  text-align: center;
+}
+
+.alarmMax {
+  @include alarm(red);
+}
+
+.alarmMin {
+  @include alarm(blue);
 }
 </style>
