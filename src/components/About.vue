@@ -11,7 +11,7 @@
       >Nettemp</a> autorstwa techfreak. Mierzy on temperatury w kotłowni i na zewnątrz budynku za pomocą czujników DS18B20 oraz DHT22 (bardzo słabe i zawodne).
     </p>
     <p>
-      Po kilku miesiącach zacząłem myśleć nad własną stacją pogody która mogła by oprócz temperatur mierzyła by również inne parametry i co najważniejsze była mojego autorstwa. Dzięki pomocy ze strony forum
+      Po kilku miesiącach zacząłem myśleć nad własną stacją pogody która mogła by oprócz temperatur mierzyłć również inne parametry i co najważniejsze była mojego autorstwa. Dzięki pomocy ze strony forum
       <a
         href="https://forum.atnel.pl/portal.php"
         target="_blank"
@@ -78,9 +78,13 @@ export default {
       "http://wachcio.pl/meteo_vue/assets/slider/meteo3.png",
       "http://wachcio.pl/meteo_vue/assets/slider/meteo4.png",
       "http://wachcio.pl/meteo_vue/assets/slider/IMG_5905.jpg",
-      "http://wachcio.pl/meteo_vue/assets/slider/IMG_5925.jpg"
+      "http://wachcio.pl/meteo_vue/assets/slider/IMG_5925.jpg",
+      "http://wachcio.pl/meteo_vue/assets/slider/IMG_20190104_144055.jpg",
+      "http://wachcio.pl/meteo_vue/assets/slider/IMG_20180407_161515269.jpg",
+      "http://wachcio.pl/meteo_vue/assets/slider/IMG_20180407_161528834.jpg",
+      "http://wachcio.pl/meteo_vue/assets/slider/IMG_20180408_112302544.jpg"
     ],
-    fluxCaptions: ["", "", "", "", "Widok czujników stacji meteo", ""],
+    fluxCaptions: ["", "", "", "", "Widok czujników stacji meteo", "", ""],
     fluxTransitions: {
       transitionRound2: Transitions.transitionRound2
     }
