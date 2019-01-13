@@ -46,6 +46,7 @@ class Sensors
         $arr["sensorCategoryTitle"] = $sensorType;
         $arr["alarmMin"] = $alarmMin;
         $arr["alarmMax"] = $alarmMax;
+        
 
         if ($sensorType == "Odczyty z AVR") {
             $arr["sensorCategoryNr"] = 1;
@@ -308,6 +309,15 @@ class Sensors
         }
         
         
+        $datetime1 = new DateTime("now");
+        $datetime2 = new DateTime($arr["valueCurrent"]["date"]);
+        $interval = $datetime1->diff($datetime2);
+
+        if (intval($interval->format('%d%h%i'))>5) {
+        $arr["upToDate"] = false;
+        } else {
+            $arr["upToDate"] = true; 
+        }
 
         array_push($sensorsData, $arr);
 

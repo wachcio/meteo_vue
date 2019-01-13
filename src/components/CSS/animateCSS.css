@@ -2294,6 +2294,12 @@
 @-webkit-keyframes lightSpeedOut {
   from {
     opacity: 1;
+    height: 100%;
+  }
+
+  40% {
+    opacity: 1;
+    height: 0;
   }
 
   to {
@@ -2303,10 +2309,13 @@
   }
 }
 
+
 @keyframes lightSpeedOut {
   from {
     opacity: 1;
   }
+
+
 
   to {
     -webkit-transform: translate3d(100%, 0, 0) skewX(30deg);
@@ -2321,6 +2330,9 @@
   -webkit-animation-timing-function: ease-in;
   animation-timing-function: ease-in;
 }
+
+
+
 
 @-webkit-keyframes rotateIn {
   from {

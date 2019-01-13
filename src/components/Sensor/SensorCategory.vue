@@ -12,8 +12,8 @@
           @click="categoryClick(n-1)"
         >{{h1Title(sensorsCurrent[newCategoryIndex[n-1]])}}</h1>
 
-        <AnimateCSS enter="lightSpeedIn" leave="lightSpeedOut">
-          <div class="sensorWrapper" v-if="categoryVisible[n-1]">
+        <AnimateCSS enter="lightSpeedIn" leave="lightSpeedOut" appear="appear">
+          <div class="sensorWrapper" v-show="categoryVisible[n-1]">
             <div v-for="(sensorCurrent, i) in sensorsToCategory(n)" :key="i">
               <Sensor :sensorCurrent="sensorCurrent"/>
             </div>
@@ -30,13 +30,13 @@
 </template>
 
 <script>
-import Vue from "vue";
+// import Vue from "vue";
 import Sensor from "./Sensor";
 import InfoBox from "./InfoBox";
 
 import AirQualityWidget from "./AirQualityWidget";
 import AnimateCSS from "../CSS/AnimateCSS";
-import { mapState, mapMutations, mapActions, mapGetters } from "vuex";
+import { mapState, mapMutations, mapActions } from "vuex";
 
 export default {
   name: "SensorCategory",
@@ -130,6 +130,7 @@ export default {
   /* flex-direction: column; */
   /* justify-content: center; */
   text-align: center;
+  transition: 0.3s height ease-in;
 }
 .readings,
 .sensorWrapper {
@@ -137,7 +138,7 @@ export default {
   flex-basis: 100%;
   display: flex;
   flex-wrap: wrap;
-
+  transition: 0.3s height ease-in;
   justify-content: center;
 }
 hr,
