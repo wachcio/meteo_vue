@@ -1,7 +1,7 @@
 <template>
   <div class="readings" v-show="isLoaded || sensorsCurrent.length">
     <div class="wrapper">
-      <div class="sensorTitle" v-for="n in 4" :key="n">
+      <div class="sensorTitle" v-for="n in nrOfCategory" :key="n">
         <div class="hrWrapper" v-if="n>1">
           <hr class="hr1">
           <hr class="hr2">
@@ -17,7 +17,7 @@
             <div v-for="(sensorCurrent, i) in sensorsToCategory(n)" :key="i">
               <Sensor :sensorCurrent="sensorCurrent"/>
             </div>
-            <AirQualityWidget v-if="n==4"/>
+            <AirQualityWidget v-if="n==nrOfCategory"/>
           </div>
         </AnimateCSS>
       </div>
@@ -43,10 +43,13 @@ export default {
   props: {},
   data() {
     return {
-      newCategoryIndex: [0, 16, 30, 34],
+      // newCategoryIndex: [0, 16, 30, 34],
+      newCategoryIndex: [0, 16, 30],
       currentDate: undefined,
+      // categoryVisible: [true, true, true, true],
       categoryVisible: [true, true, true, true],
-      sensorData: undefined
+      sensorData: undefined,
+      nrOfCategory: 4
     };
   },
   methods: {

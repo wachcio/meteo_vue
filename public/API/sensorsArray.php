@@ -37,17 +37,17 @@ $sensorsDetail = Array(
     28 => array("Sypialnia", "zegar_sypialnia", "", "Odczyty z Raspberry Pi", "zegary", "temperatura.png", "°C", "20", "26"),
     29 => array("Salon", "zegar_salon", "", "Odczyty z Raspberry Pi", "zegary", "temperatura.png", "°C", "20", "26"),
     //--------------Rpi studnia-------
-    30 => array("Raspberry Pi studnia", "Rpi_studnia", "", "Odczyty ze studni", "", "temperatura_raspberry.png", "°C", "", "60"),
-    31 => array("Studnia", "28-031661bc32ff", "", "Odczyty ze studni", "", "studnia.png", "°C", "0", ""),
-    32 => array("Studnia rura", "28-800000262700", "", "Odczyty ze studni", "", "studnia.png", "°C", "0", ""),
-    33 => array("Garaż", "28-8000000493a0", "", "Odczyty ze studni", "", "garaz.png", "°C", "", ""),
+    // 30 => array("Raspberry Pi studnia", "Rpi_studnia", "", "Odczyty ze studni", "", "temperatura_raspberry.png", "°C", "", "60"),
+    // 31 => array("Studnia", "28-031661bc32ff", "", "Odczyty ze studni", "", "studnia.png", "°C", "0", ""),
+    // 32 => array("Studnia rura", "28-800000262700", "", "Odczyty ze studni", "", "studnia.png", "°C", "0", ""),
+    // 33 => array("Garaż", "28-8000000493a0", "", "Odczyty ze studni", "", "garaz.png", "°C", "", ""),
     //--------------Czystość powietrza-------
-    34 => array("Indeks czystości powietrza", "pyl_warszawska", "jakosc_powietrza", "Czujnik pyłu na ul. Warszawskiej", "", "pyl.png", " ", "", ""),
-    35 => array("Pył zawieszony PM1", "pyl_warszawska", "pm1", "Czujnik pyłu na ul. Warszawskiej", "", "pyl_1.png", "μg/m3", "", ""),
-    36 => array("Pył zawieszony PM2,5", "pyl_warszawska", "pm25", "Czujnik pyłu na ul. Warszawskiej", "", "pyl_25.png", "μg/m3", "", ""),
-    37 => array("Pył zawieszony PM10", "pyl_warszawska", "pm10", "Czujnik pyłu na ul. Warszawskiej", "", "pyl_10.png", "μg/m3", "", ""),
-    38 => array("Ciśnienie", "pyl_warszawska", "cisnienie", "Czujnik pyłu na ul. Warszawskiej", "", "cisnienie_zredukowane.png", "hPa", "", ""),
-    39 => array("Wilgotność", "pyl_warszawska", "wilgotnosc", "Czujnik pyłu na ul. Warszawskiej", "", "wilgotnosc.png", "%", "", ""),
-    40 => array("Temperatura", "pyl_warszawska", "temperatura", "Czujnik pyłu na ul. Warszawskiej", "", "temperatura.png", "°C", "", ""),
+    30 => array("Indeks czystości powietrza", "pyl_warszawska", "jakosc_powietrza", "Czujnik pyłu na ul. Warszawskiej", "", "pyl.png", " ", "", ""),
+    31 => array("Pył zawieszony PM1", "pyl_warszawska", "pm1", "Czujnik pyłu na ul. Warszawskiej", "", "pyl_1.png", "μg/m3", "", ""),
+    32 => array("Pył zawieszony PM2,5", "pyl_warszawska", "pm25", "Czujnik pyłu na ul. Warszawskiej", "", "pyl_25.png", "μg/m3", "", ""),
+    33 => array("Pył zawieszony PM10", "pyl_warszawska", "pm10", "Czujnik pyłu na ul. Warszawskiej", "", "pyl_10.png", "μg/m3", "", ""),
+    34 => array("Ciśnienie", "pyl_warszawska", "cisnienie", "Czujnik pyłu na ul. Warszawskiej", "", "cisnienie_zredukowane.png", "hPa", "", ""),
+    35 => array("Wilgotność", "pyl_warszawska", "wilgotnosc", "Czujnik pyłu na ul. Warszawskiej", "", "wilgotnosc.png", "%", "", ""),
+    36 => array("Temperatura", "pyl_warszawska", "temperatura", "Czujnik pyłu na ul. Warszawskiej", "", "temperatura.png", "°C", "", ""),
 
 );
