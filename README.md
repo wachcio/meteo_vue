@@ -13,7 +13,7 @@ Ostatnim elementem układanki jest odpytywanie bazy danych Airly o dane z czujni
 
 Dane z wszystkich moich części systemu trafiają co minutę (dane jakości powietrza ze względu na ograniczenia AirlyAPI odczytywane są co kwadrans) do bazy danych MySQL umieszczonej na zewnętrznym serwerze. Odbywa się to za pośrednictwem napisanych przeze mnie skryptów PHP. Dopiero z tej bazy poprzez mój mini system Rest API czerpie informacje ta strona. Jeśli jest problem z danym czujnikiem i z jakiegoś powodu dane są starsze niż 5 minut (16 minut czujniki jakości powietrza) sygnalizowane to jest czerwoną obwódką wokół ikony czujnika. Po kliknięciu na czujnik pokazują się bardziej szczegółowe informacje. Natomist kliknięcie na tytuł kategorii powoduje jej ukrycie lub pokazanie.
 
-##Demo
+## Demo
 http://meteo.wachcio.pl/
 
 ## Project setup
