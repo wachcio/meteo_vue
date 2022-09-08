@@ -1,0 +1,9 @@
+[project]
+mcu=atmega32
+f_cpu=11059200
+programmer=MkBoot WiFi
+[MkVersion]
+BuildVersion=1.0.0
+BuildNumber=8
+BuildTime=17:20:26
+BuildDate=29.08.2019
